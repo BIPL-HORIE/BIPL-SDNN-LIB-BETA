@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>BIPL.SDNN.LIB: C:/Users/K_Horie/Desktop/GIT-BIPL-SDNN-LIB/BIPL.SDNN/oldsource2/BIPL_LIB_SDNN_SD_OLD.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">BIPL.SDNN.LIB
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.10 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>総合概要</span></a></li>
+      <li><a href="pages.html"><span>諸情報</span></a></li>
+      <li><a href="namespaces.html"><span>名前空間</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e1870b190ff70df596611a72603bc9a0.html">BIPL.SDNN</a></li><li class="navelem"><a class="el" href="dir_b0e4b020c6d39f402031ee57d05570f0.html">oldsource2</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">BIPL_LIB_SDNN_SD_OLD.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_b_i_p_l___l_i_b___s_d_n_n___s_d___o_l_d_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacebipl.html">bipl</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">namespace </span>parameters</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="comment">//前方宣言</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">class </span>PARAMETERS;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">namespace </span><a class="code" href="namespacebipl_1_1sdnn.html#a0f70912a1b22f6efc88ef87b36d65d78">sdnn</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">namespace </span>pc</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keyword">namespace </span>base</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <span class="keyword">class </span>SDNN_PC_VIRTUAL;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">namespace </span>sd</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespacebipl_1_1sdnn_1_1sd_1_1old.html">   24</a></span>&#160;            <span class="keyword">namespace </span>old</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            {</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html">   32</a></span>&#160;                <span class="keyword">class </span><a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html">SDNN_SD_OLD</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a419c101f9c3d7aa6939e4fa8eb90fe87">SDNN_SD_OLD</a>(<span class="keyword">const</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html">SDNN_SD_OLD</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    <span class="keywordtype">void</span> operator=(<span class="keyword">const</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html">SDNN_SD_OLD</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#adea9371f3197c40420ccb0bf08d1cef0">   42</a></span>&#160;                    <span class="keywordtype">int</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#adea9371f3197c40420ccb0bf08d1cef0">input_number_</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#aeefc2a818136da785b96278f86ebabc2">   44</a></span>&#160;                    <a class="code" href="classbipl_1_1sdnn_1_1pc_1_1base_1_1_s_d_n_n___p_c___v_i_r_t_u_a_l.html">pc::base::SDNN_PC_VIRTUAL</a> *<a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#aeefc2a818136da785b96278f86ebabc2">pattern_s_</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a27cace784c2834ea44a9a762138498ae">   46</a></span>&#160;                    <a class="code" href="classbipl_1_1sdnn_1_1pc_1_1base_1_1_s_d_n_n___p_c___v_i_r_t_u_a_l.html">pc::base::SDNN_PC_VIRTUAL</a> *<a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a27cace784c2834ea44a9a762138498ae">pattern_c_</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a1eba3f90e9a3ce366e081f828fcd4ef3">   49</a></span>&#160;                    <span class="keywordtype">int</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a1eba3f90e9a3ce366e081f828fcd4ef3">desensitize_number_</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a337e587984dddec28426e12b41f6107e">   51</a></span>&#160;                    <span class="keywordtype">int</span> *<a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a337e587984dddec28426e12b41f6107e">quantized_input_</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a01999d36c342aff1a99ddfd1240dbb9d">   53</a></span>&#160;                    <span class="keywordtype">int</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a01999d36c342aff1a99ddfd1240dbb9d">n_</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a651944bc98e7ef4780153ea247fd6443">   54</a></span>&#160;                    <span class="keywordtype">int</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a651944bc98e7ef4780153ea247fd6443">q_</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a459d9e820a62f2bd6cf30b1465742a09">   55</a></span>&#160;                    <span class="keywordtype">int</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a459d9e820a62f2bd6cf30b1465742a09">n32_</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a419c101f9c3d7aa6939e4fa8eb90fe87">SDNN_SD_OLD</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a93ea62d2752fda441b50dbb2125d8e07">~SDNN_SD_OLD</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a8e34c61ac6219bbedfeb1483aa0d7c28">InitSD</a>(<a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html">parameters::PARAMETERS</a> &amp;sdnn_parameter);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#aecbd71c7c46effab3be90f43c375bf11">GetAdressDataList</a>(<span class="keywordtype">int</span>* &amp;out_adress_data_list, <span class="keyword">const</span> <span class="keywordtype">double</span>* input);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    <span class="keywordtype">int</span> <a class="code" href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a0d856f6291bd44df3ee30cad796b5ba2">GetSDPatternNeuronNumber</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                };</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="comment">// 一応名前を共有</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a93ea62d2752fda441b50dbb2125d8e07"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a93ea62d2752fda441b50dbb2125d8e07">bipl::sdnn::sd::old::SDNN_SD_OLD::~SDNN_SD_OLD</a></div><div class="ttdeci">~SDNN_SD_OLD(void)</div><div class="ttdoc">デコンストラクタ </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.cpp:8</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a651944bc98e7ef4780153ea247fd6443"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a651944bc98e7ef4780153ea247fd6443">bipl::sdnn::sd::old::SDNN_SD_OLD::q_</a></div><div class="ttdeci">int q_</div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.h:54</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a01999d36c342aff1a99ddfd1240dbb9d"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a01999d36c342aff1a99ddfd1240dbb9d">bipl::sdnn::sd::old::SDNN_SD_OLD::n_</a></div><div class="ttdeci">int n_</div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.h:53</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a0d856f6291bd44df3ee30cad796b5ba2"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a0d856f6291bd44df3ee30cad796b5ba2">bipl::sdnn::sd::old::SDNN_SD_OLD::GetSDPatternNeuronNumber</a></div><div class="ttdeci">int GetSDPatternNeuronNumber(void)</div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.cpp:157</div></div>
+<div class="ttc" id="namespacebipl_html"><div class="ttname"><a href="namespacebipl.html">bipl</a></div><div class="ttdef"><b>Definition:</b> BIPL_LIB_LEXIAL.cpp:11</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_aeefc2a818136da785b96278f86ebabc2"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#aeefc2a818136da785b96278f86ebabc2">bipl::sdnn::sd::old::SDNN_SD_OLD::pattern_s_</a></div><div class="ttdeci">pc::base::SDNN_PC_VIRTUAL * pattern_s_</div><div class="ttdoc">不感化される側パターン </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.h:44</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_adea9371f3197c40420ccb0bf08d1cef0"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#adea9371f3197c40420ccb0bf08d1cef0">bipl::sdnn::sd::old::SDNN_SD_OLD::input_number_</a></div><div class="ttdeci">int input_number_</div><div class="ttdoc">入力数 </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.h:42</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a337e587984dddec28426e12b41f6107e"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a337e587984dddec28426e12b41f6107e">bipl::sdnn::sd::old::SDNN_SD_OLD::quantized_input_</a></div><div class="ttdeci">int * quantized_input_</div><div class="ttdoc">inputを量子化したもの </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.h:51</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1pc_1_1base_1_1_s_d_n_n___p_c___v_i_r_t_u_a_l_html"><div class="ttname"><a href="classbipl_1_1sdnn_1_1pc_1_1base_1_1_s_d_n_n___p_c___v_i_r_t_u_a_l.html">bipl::sdnn::pc::base::SDNN_PC_VIRTUAL</a></div><div class="ttdoc">SDNNのPC部分仮想クラス </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_PC_BASE.h:26</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a27cace784c2834ea44a9a762138498ae"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a27cace784c2834ea44a9a762138498ae">bipl::sdnn::sd::old::SDNN_SD_OLD::pattern_c_</a></div><div class="ttdeci">pc::base::SDNN_PC_VIRTUAL * pattern_c_</div><div class="ttdoc">不感化する側パターン </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.h:46</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a8e34c61ac6219bbedfeb1483aa0d7c28"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a8e34c61ac6219bbedfeb1483aa0d7c28">bipl::sdnn::sd::old::SDNN_SD_OLD::InitSD</a></div><div class="ttdeci">void InitSD(parameters::PARAMETERS &amp;sdnn_parameter)</div><div class="ttdoc">PCの初期化 </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.cpp:18</div></div>
+<div class="ttc" id="namespacebipl_1_1sdnn_html_a0f70912a1b22f6efc88ef87b36d65d78"><div class="ttname"><a href="namespacebipl_1_1sdnn.html#a0f70912a1b22f6efc88ef87b36d65d78">bipl::sdnn::sdnn</a></div><div class="ttdeci">bipl::sdnn::SDNN sdnn</div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_DYNAMIC.cpp:8</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html">bipl::sdnn::sd::old::SDNN_SD_OLD</a></div><div class="ttdoc">SDNNのSD,古いが速い </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.h:32</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a459d9e820a62f2bd6cf30b1465742a09"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a459d9e820a62f2bd6cf30b1465742a09">bipl::sdnn::sd::old::SDNN_SD_OLD::n32_</a></div><div class="ttdeci">int n32_</div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.h:55</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_aecbd71c7c46effab3be90f43c375bf11"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#aecbd71c7c46effab3be90f43c375bf11">bipl::sdnn::sd::old::SDNN_SD_OLD::GetAdressDataList</a></div><div class="ttdeci">void GetAdressDataList(int *&amp;out_adress_data_list, const double *input)</div><div class="ttdoc">生入力をアドレスデータリスト型に変換 </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.cpp:69</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a1eba3f90e9a3ce366e081f828fcd4ef3"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a1eba3f90e9a3ce366e081f828fcd4ef3">bipl::sdnn::sd::old::SDNN_SD_OLD::desensitize_number_</a></div><div class="ttdeci">int desensitize_number_</div><div class="ttdoc">不感化パターン数 </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.h:49</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html">bipl::parameters::PARAMETERS</a></div><div class="ttdoc">独自企画パラメータ </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.h:49</div></div>
+<div class="ttc" id="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d_html_a419c101f9c3d7aa6939e4fa8eb90fe87"><div class="ttname"><a href="classbipl_1_1sdnn_1_1sd_1_1old_1_1_s_d_n_n___s_d___o_l_d.html#a419c101f9c3d7aa6939e4fa8eb90fe87">bipl::sdnn::sd::old::SDNN_SD_OLD::SDNN_SD_OLD</a></div><div class="ttdeci">SDNN_SD_OLD(void)</div><div class="ttdoc">コンストラクタ もろもろ初期化 </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_SDNN_SD_OLD.cpp:5</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

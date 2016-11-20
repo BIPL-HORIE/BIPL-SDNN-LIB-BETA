@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="SDNN">
+      <UniqueIdentifier>{6feded37-b1ef-4aa7-b9a1-c8ba5c6f5b39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\BASE">
+      <UniqueIdentifier>{1f446088-6685-4e35-8f0d-8c3cf6473c07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\BASE\NN">
+      <UniqueIdentifier>{b980b851-725b-4db6-a97a-d521c9f5594e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\BASE\NN\BIPL_LIB_SDNN_PP">
+      <UniqueIdentifier>{cd60a28d-08ed-4144-87e1-426491a7e056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\BASE\NN\BIPL_LIB_SDNN_SP">
+      <UniqueIdentifier>{468959bb-65ee-453e-a79c-676e828ed757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\BASE\PC">
+      <UniqueIdentifier>{c89f5c59-6c5c-4d92-a5fc-8d5dd8a9f403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\BASE\SD">
+      <UniqueIdentifier>{135cbbcb-0dda-40e1-aefa-e6626cc878a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\BASE\SD\BIPL_LIB_SDNN_SINGLE_SD">
+      <UniqueIdentifier>{4efec4f6-fbde-4f47-9857-e0ec18f15b38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\BASE\NN\BIPL_LIB_SDNN_NN_CUSTOM">
+      <UniqueIdentifier>{45b10c97-37fa-40ff-bedd-e607aa3becf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PARAMETERS">
+      <UniqueIdentifier>{d9030002-0abe-4d8c-827d-8db1761decc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\BASE\PC\SYMBOL">
+      <UniqueIdentifier>{8a61ce48-047e-4bac-a7fb-bef07256ec49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDNN\SDNN_PARAMETERS">
+      <UniqueIdentifier>{64cf20ca-ffdd-4bef-bbd2-cadbfac2d353}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BIPL_LIB_SDNN_PC.h">
+      <Filter>SDNN\BASE\PC</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN.h">
+      <Filter>SDNN</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN_NN_VIRTUAL.h">
+      <Filter>SDNN\BASE\NN</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN_NN_PP.h">
+      <Filter>SDNN\BASE\NN\BIPL_LIB_SDNN_PP</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN_NN_SP.h">
+      <Filter>SDNN\BASE\NN\BIPL_LIB_SDNN_SP</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN_FACTORY.h">
+      <Filter>SDNN</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN_SD_VIRTUAL.h">
+      <Filter>SDNN\BASE\SD</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN_SD_SINGLE.h">
+      <Filter>SDNN\BASE\SD\BIPL_LIB_SDNN_SINGLE_SD</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN_NN_CUSTOM.h">
+      <Filter>SDNN\BASE\NN\BIPL_LIB_SDNN_NN_CUSTOM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\BIPL.PARAMETERS\BIPL_LIB_LEXIAL.h">
+      <Filter>PARAMETERS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\BIPL.PARAMETERS\BIPL_LIB_NUMERICAL_FORMULA_ANALYSIS.h">
+      <Filter>PARAMETERS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\BIPL.PARAMETERS\BIPL_LIB_PARAMETER_BASE.h">
+      <Filter>PARAMETERS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\BIPL.PARAMETERS\BIPL_LIB_PARAMETERS.h">
+      <Filter>PARAMETERS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\BIPL.PARAMETERS\BIPL_LIB_PARAMETERS_JUDGEMENT.h">
+      <Filter>PARAMETERS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\BIPL.PARAMETERS\BIPL_LIB_UTILITY.h">
+      <Filter>PARAMETERS</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN_PC_SYMBOL.h">
+      <Filter>SDNN\BASE\PC\SYMBOL</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_SDNN_PARAMETERS.h">
+      <Filter>SDNN\SDNN_PARAMETERS</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BIPL_LIB_SDNN_PC.cpp">
+      <Filter>SDNN\BASE\PC</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN.cpp">
+      <Filter>SDNN</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN_NN_PP.cpp">
+      <Filter>SDNN\BASE\NN\BIPL_LIB_SDNN_PP</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN_NN_VIRTUAL.cpp">
+      <Filter>SDNN\BASE\NN</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN_NN_SP.cpp">
+      <Filter>SDNN\BASE\NN\BIPL_LIB_SDNN_SP</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN_FACTORY.cpp">
+      <Filter>SDNN</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN_SD_VIRTUAL.cpp">
+      <Filter>SDNN\BASE\SD</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN_SD_SINGLE.cpp">
+      <Filter>SDNN\BASE\SD\BIPL_LIB_SDNN_SINGLE_SD</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN_NN_CUSTOM.cpp">
+      <Filter>SDNN\BASE\NN\BIPL_LIB_SDNN_NN_CUSTOM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BIPL.PARAMETERS\BIPL_LIB_LEXIAL.cpp">
+      <Filter>PARAMETERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BIPL.PARAMETERS\BIPL_LIB_NUMERICAL_FORMULA_ANALYSIS.cpp">
+      <Filter>PARAMETERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BIPL.PARAMETERS\BIPL_LIB_PARAMETERS.cpp">
+      <Filter>PARAMETERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BIPL.PARAMETERS\BIPL_LIB_PARAMETERS_JUDGEMENT.cpp">
+      <Filter>PARAMETERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BIPL.PARAMETERS\BIPL_LIB_UTILITY.cpp">
+      <Filter>PARAMETERS</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN_PC_SYMBOL.cpp">
+      <Filter>SDNN\BASE\PC\SYMBOL</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_SDNN_PARAMETERS.cpp">
+      <Filter>SDNN\SDNN_PARAMETERS</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

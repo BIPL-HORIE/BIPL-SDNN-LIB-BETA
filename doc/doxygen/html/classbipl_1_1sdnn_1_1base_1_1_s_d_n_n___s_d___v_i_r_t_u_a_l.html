@@ -1,0 +1,581 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>BIPL.SDNN.LIB: bipl::sdnn::base::SDNN_SD_VIRTUAL クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">BIPL.SDNN.LIB
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.10 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>総合概要</span></a></li>
+      <li><a href="pages.html"><span>諸情報</span></a></li>
+      <li><a href="namespaces.html"><span>名前空間</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>クラス一覧</span></a></li>
+      <li><a href="classes.html"><span>クラス索引</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>クラスメンバ</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacebipl.html">bipl</a></li><li class="navelem"><a class="el" href="namespacebipl_1_1sdnn.html">sdnn</a></li><li class="navelem"><a class="el" href="namespacebipl_1_1sdnn_1_1base.html">base</a></li><li class="navelem"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html">SDNN_SD_VIRTUAL</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pro-types">限定公開型</a> &#124;
+<a href="#pro-methods">限定公開メンバ関数</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">bipl::sdnn::base::SDNN_SD_VIRTUAL クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>SDNNのSD部分，PCの管理クラスを兼ねる．  
+ <a href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_b_i_p_l___l_i_b___s_d_n_n___s_d___v_i_r_t_u_a_l_8h_source.html">BIPL_LIB_SDNN_SD_VIRTUAL.h</a>&gt;</code></p>
+<div class="dynheader">
+bipl::sdnn::base::SDNN_SD_VIRTUAL の継承関係図</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.png" usemap="#bipl::sdnn::base::SDNN_SD_VIRTUAL_map" alt=""/>
+  <map id="bipl::sdnn::base::SDNN_SD_VIRTUAL_map" name="bipl::sdnn::base::SDNN_SD_VIRTUAL_map">
+<area href="classbipl_1_1sdnn_1_1base_1_1sd_1_1_s_d_n_n___s_d___m_u_l_t_i.html" alt="bipl::sdnn::base::sd::SDNN_SD_MULTI" shape="rect" coords="0,56,233,80"/>
+<area href="classbipl_1_1sdnn_1_1base_1_1sd_1_1_s_d_n_n___s_d___s_i_n_g_l_e.html" alt="bipl::sdnn::base::sd::SDNN_SD_SINGLE" shape="rect" coords="243,56,476,80"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a44cee37a3cfbb191fca0b80d80d32333"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a44cee37a3cfbb191fca0b80d80d32333">SDNN_SD_VIRTUAL</a> (void)</td></tr>
+<tr class="memdesc:a44cee37a3cfbb191fca0b80d80d32333"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a44cee37a3cfbb191fca0b80d80d32333">[詳解]</a><br /></td></tr>
+<tr class="separator:a44cee37a3cfbb191fca0b80d80d32333"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2113b9b887e28667e892167d03a7b2b2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a2113b9b887e28667e892167d03a7b2b2">~SDNN_SD_VIRTUAL</a> (void)</td></tr>
+<tr class="memdesc:a2113b9b887e28667e892167d03a7b2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">デコンストラクタ  <a href="#a2113b9b887e28667e892167d03a7b2b2">[詳解]</a><br /></td></tr>
+<tr class="separator:a2113b9b887e28667e892167d03a7b2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb8a24ef412acd8b2de81fa0ff414acf"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#aeb8a24ef412acd8b2de81fa0ff414acf">InitSD</a> (parameters::PARAMETERS &amp;sdnn_parameter)</td></tr>
+<tr class="memdesc:aeb8a24ef412acd8b2de81fa0ff414acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDの初期化 設定すべきパラメータ <a class="el" href="classbipl_1_1sdnn_1_1_s_d_n_n.html" title="SDNNのクラス ">SDNN</a>\input_number:入力数 <a class="el" href="classbipl_1_1sdnn_1_1_s_d_n_n.html" title="SDNNのクラス ">SDNN</a>\SD\method(mutual|file):不感化の組み合わせの決定方法 <a class="el" href="classbipl_1_1sdnn_1_1_s_d_n_n.html" title="SDNNのクラス ">SDNN</a>\SD\file(method == fileの場合):参照すべきファイル名  <a href="#aeb8a24ef412acd8b2de81fa0ff414acf">[詳解]</a><br /></td></tr>
+<tr class="separator:aeb8a24ef412acd8b2de81fa0ff414acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2627786e8eaa665d584e1311eb79367e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a2627786e8eaa665d584e1311eb79367e">SelectiveDesensitization</a> (int *out_adress_data_list, const double *input)</td></tr>
+<tr class="memdesc:a2627786e8eaa665d584e1311eb79367e"><td class="mdescLeft">&#160;</td><td class="mdescRight">選択的不感化の実行  <a href="#a2627786e8eaa665d584e1311eb79367e">[詳解]</a><br /></td></tr>
+<tr class="separator:a2627786e8eaa665d584e1311eb79367e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a4f6d602b75e9fa86f30d6e52975439"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a6a4f6d602b75e9fa86f30d6e52975439">GetSDPatternNeuronNumber</a> (void)</td></tr>
+<tr class="memdesc:a6a4f6d602b75e9fa86f30d6e52975439"><td class="mdescLeft">&#160;</td><td class="mdescRight">不感化済みパターンの素子数  <a href="#a6a4f6d602b75e9fa86f30d6e52975439">[詳解]</a><br /></td></tr>
+<tr class="separator:a6a4f6d602b75e9fa86f30d6e52975439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0483422933d5911380fb378b92e471d8"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a0483422933d5911380fb378b92e471d8">GetDesensitizationList</a> (void)</td></tr>
+<tr class="memdesc:a0483422933d5911380fb378b92e471d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">不感化リストの返却  <a href="#a0483422933d5911380fb378b92e471d8">[詳解]</a><br /></td></tr>
+<tr class="separator:a0483422933d5911380fb378b92e471d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
+限定公開型</h2></td></tr>
+<tr class="memitem:a83239050eb4ca9172b69c7d86afee50e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a83239050eb4ca9172b69c7d86afee50e">INPUT_TYPE_</a> { <a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a83239050eb4ca9172b69c7d86afee50ea78f7e9e1ad9f6a130dc6643bf0f1487f">NUMERICAL</a> = 0, 
+<a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a83239050eb4ca9172b69c7d86afee50eaa3e62cc646d3d2103526c2ff7d6cde4b">SYMBOL</a> = 1
+ }<tr class="memdesc:a83239050eb4ca9172b69c7d86afee50e"><td class="mdescLeft">&#160;</td><td class="mdescRight">inputの種類  <a href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a83239050eb4ca9172b69c7d86afee50e">[詳解]</a><br /></td></tr>
+<tr class="separator:a83239050eb4ca9172b69c7d86afee50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+限定公開メンバ関数</h2></td></tr>
+<tr class="memitem:a4df15576628e5373fb06c25c4df45861"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a4df15576628e5373fb06c25c4df45861">SelectiveDesensitizationAstarisk</a> (int *out_adress_data_list, const double *input)</td></tr>
+<tr class="memdesc:a4df15576628e5373fb06c25c4df45861"><td class="mdescLeft">&#160;</td><td class="mdescRight">不感化部分の具体的な中身．関数ポインタリストを使って欲しくないためにわざとvirtualにしていない．  <a href="#a4df15576628e5373fb06c25c4df45861">[詳解]</a><br /></td></tr>
+<tr class="separator:a4df15576628e5373fb06c25c4df45861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:ae7d42dacb282d8f78d1330fde43d45c7"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#ae7d42dacb282d8f78d1330fde43d45c7">input_number_</a></td></tr>
+<tr class="memdesc:ae7d42dacb282d8f78d1330fde43d45c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">入力数  <a href="#ae7d42dacb282d8f78d1330fde43d45c7">[詳解]</a><br /></td></tr>
+<tr class="separator:ae7d42dacb282d8f78d1330fde43d45c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae752fbae4d2d895631873006cb1198d2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#ae752fbae4d2d895631873006cb1198d2">quantized_input_</a></td></tr>
+<tr class="memdesc:ae752fbae4d2d895631873006cb1198d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">inputを量子化したもの  <a href="#ae752fbae4d2d895631873006cb1198d2">[詳解]</a><br /></td></tr>
+<tr class="separator:ae752fbae4d2d895631873006cb1198d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9582d65c0d6e9afcc97fc5c9d430398c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a83239050eb4ca9172b69c7d86afee50e">INPUT_TYPE_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a9582d65c0d6e9afcc97fc5c9d430398c">input_type_</a></td></tr>
+<tr class="separator:a9582d65c0d6e9afcc97fc5c9d430398c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60a53fee061746e265eab00c58526c52"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a60a53fee061746e265eab00c58526c52">q_</a></td></tr>
+<tr class="separator:a60a53fee061746e265eab00c58526c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c91c11ab081cbb4dbea982d0e30ff4c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a3c91c11ab081cbb4dbea982d0e30ff4c">desensitized_pattern_neuron_number_</a></td></tr>
+<tr class="memdesc:a3c91c11ab081cbb4dbea982d0e30ff4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">不感化の結果得られる不感化パターンの素子の数  <a href="#a3c91c11ab081cbb4dbea982d0e30ff4c">[詳解]</a><br /></td></tr>
+<tr class="separator:a3c91c11ab081cbb4dbea982d0e30ff4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57f4351b1a7226ddca4dcff0abd398dc"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a57f4351b1a7226ddca4dcff0abd398dc">desensitize_number_</a></td></tr>
+<tr class="memdesc:a57f4351b1a7226ddca4dcff0abd398dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">不感化数  <a href="#a57f4351b1a7226ddca4dcff0abd398dc">[詳解]</a><br /></td></tr>
+<tr class="separator:a57f4351b1a7226ddca4dcff0abd398dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5169513593875f846466d119b4b6d135"><td class="memItemLeft" align="right" valign="top">void(SDNN_SD_VIRTUAL::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a5169513593875f846466d119b4b6d135">SelectiveDesensitizationPointer</a> )(int *out_adress_data_list, const double *input)</td></tr>
+<tr class="memdesc:a5169513593875f846466d119b4b6d135"><td class="mdescLeft">&#160;</td><td class="mdescRight">不感化部分の関数ポインタ  <a href="#a5169513593875f846466d119b4b6d135">[詳解]</a><br /></td></tr>
+<tr class="separator:a5169513593875f846466d119b4b6d135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>SDNNのSD部分，PCの管理クラスを兼ねる． </p>
+<dl class="section note"><dt>覚え書き</dt><dd>俺は何回書き直しているのだろうか．．． </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Kazumasa HORIE </dd></dl>
+<dl class="section date"><dt>日付</dt><dd>2015/12/15~ </dd></dl>
+<dl class="section version"><dt>バージョン</dt><dd>β1.0（12/26：ブラックボックステスト終了） </dd></dl>
+</div><h2 class="groupheader">列挙型メンバ詳解</h2>
+<a class="anchor" id="a83239050eb4ca9172b69c7d86afee50e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a83239050eb4ca9172b69c7d86afee50e">bipl::sdnn::base::SDNN_SD_VIRTUAL::INPUT_TYPE_</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>inputの種類 </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a class="anchor" id="a83239050eb4ca9172b69c7d86afee50ea78f7e9e1ad9f6a130dc6643bf0f1487f"></a>NUMERICAL&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a83239050eb4ca9172b69c7d86afee50eaa3e62cc646d3d2103526c2ff7d6cde4b"></a>SYMBOL&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">構築子と解体子</h2>
+<a class="anchor" id="a44cee37a3cfbb191fca0b80d80d32333"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bipl::sdnn::base::SDNN_SD_VIRTUAL::SDNN_SD_VIRTUAL </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+
+</div>
+</div>
+<a class="anchor" id="a2113b9b887e28667e892167d03a7b2b2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bipl::sdnn::base::SDNN_SD_VIRTUAL::~SDNN_SD_VIRTUAL </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>デコンストラクタ </p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a class="anchor" id="a0483422933d5911380fb378b92e471d8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string bipl::sdnn::base::SDNN_SD_VIRTUAL::GetDesensitizationList </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>不感化リストの返却 </p>
+<dl class="section return"><dt>戻り値</dt><dd>不感化リスト [(S1,C1),(S2,C2),,,,] </dd></dl>
+
+<p><a class="el" href="classbipl_1_1sdnn_1_1base_1_1sd_1_1_s_d_n_n___s_d___s_i_n_g_l_e.html#ad7c186e6af1fab740e425b66bbd37679">bipl::sdnn::base::sd::SDNN_SD_SINGLE</a>で再実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a6a4f6d602b75e9fa86f30d6e52975439"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int bipl::sdnn::base::SDNN_SD_VIRTUAL::GetSDPatternNeuronNumber </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>不感化済みパターンの素子数 </p>
+<dl class="section return"><dt>戻り値</dt><dd>不感化済みパターンの素子数=desensitized_pattern_neuron_number． </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aeb8a24ef412acd8b2de81fa0ff414acf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bipl::sdnn::base::SDNN_SD_VIRTUAL::InitSD </td>
+          <td>(</td>
+          <td class="paramtype">parameters::PARAMETERS &amp;&#160;</td>
+          <td class="paramname"><em>sdnn_parameter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>SDの初期化 設定すべきパラメータ <a class="el" href="classbipl_1_1sdnn_1_1_s_d_n_n.html" title="SDNNのクラス ">SDNN</a>\input_number:入力数 <a class="el" href="classbipl_1_1sdnn_1_1_s_d_n_n.html" title="SDNNのクラス ">SDNN</a>\SD\method(mutual|file):不感化の組み合わせの決定方法 <a class="el" href="classbipl_1_1sdnn_1_1_s_d_n_n.html" title="SDNNのクラス ">SDNN</a>\SD\file(method == fileの場合):参照すべきファイル名 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">sdnn_parameter</td><td>パラメータ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし． </dd></dl>
+
+<p><a class="el" href="classbipl_1_1sdnn_1_1base_1_1sd_1_1_s_d_n_n___s_d___s_i_n_g_l_e.html#a1237dd211cb24bf65a073e996c545ce0">bipl::sdnn::base::sd::SDNN_SD_SINGLE</a>, <a class="el" href="classbipl_1_1sdnn_1_1base_1_1sd_1_1_s_d_n_n___s_d___m_u_l_t_i.html#ac0c3596d2ef881e5450828baf3753310">bipl::sdnn::base::sd::SDNN_SD_MULTI</a>で再実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a2627786e8eaa665d584e1311eb79367e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bipl::sdnn::base::SDNN_SD_VIRTUAL::SelectiveDesensitization </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_adress_data_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>選択的不感化の実行 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">out_adress_data_list</td><td>出力アドレス・データリスト </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>SDNNへの入力 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし． </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4df15576628e5373fb06c25c4df45861"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bipl::sdnn::base::SDNN_SD_VIRTUAL::SelectiveDesensitizationAstarisk </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out_adress_data_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>不感化部分の具体的な中身．関数ポインタリストを使って欲しくないためにわざとvirtualにしていない． </p>
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a class="anchor" id="a57f4351b1a7226ddca4dcff0abd398dc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int bipl::sdnn::base::SDNN_SD_VIRTUAL::desensitize_number_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>不感化数 </p>
+
+</div>
+</div>
+<a class="anchor" id="a3c91c11ab081cbb4dbea982d0e30ff4c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int bipl::sdnn::base::SDNN_SD_VIRTUAL::desensitized_pattern_neuron_number_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>不感化の結果得られる不感化パターンの素子の数 </p>
+
+</div>
+</div>
+<a class="anchor" id="ae7d42dacb282d8f78d1330fde43d45c7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int bipl::sdnn::base::SDNN_SD_VIRTUAL::input_number_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>入力数 </p>
+
+</div>
+</div>
+<a class="anchor" id="a9582d65c0d6e9afcc97fc5c9d430398c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___s_d___v_i_r_t_u_a_l.html#a83239050eb4ca9172b69c7d86afee50e">INPUT_TYPE_</a>&gt; bipl::sdnn::base::SDNN_SD_VIRTUAL::input_type_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a60a53fee061746e265eab00c58526c52"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; bipl::sdnn::base::SDNN_SD_VIRTUAL::q_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae752fbae4d2d895631873006cb1198d2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; bipl::sdnn::base::SDNN_SD_VIRTUAL::quantized_input_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>inputを量子化したもの </p>
+
+</div>
+</div>
+<a class="anchor" id="a5169513593875f846466d119b4b6d135"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(SDNN_SD_VIRTUAL::* bipl::sdnn::base::SDNN_SD_VIRTUAL::SelectiveDesensitizationPointer) (int *out_adress_data_list, const double *input)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>不感化部分の関数ポインタ </p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/K_Horie/Desktop/GIT-BIPL-SDNN-LIB/BIPL.SDNN/BIPL.SDNN/<a class="el" href="_b_i_p_l___l_i_b___s_d_n_n___s_d___v_i_r_t_u_a_l_8h_source.html">BIPL_LIB_SDNN_SD_VIRTUAL.h</a></li>
+<li>C:/Users/K_Horie/Desktop/GIT-BIPL-SDNN-LIB/BIPL.SDNN/BIPL.SDNN/<a class="el" href="_b_i_p_l___l_i_b___s_d_n_n___s_d___v_i_r_t_u_a_l_8cpp.html">BIPL_LIB_SDNN_SD_VIRTUAL.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

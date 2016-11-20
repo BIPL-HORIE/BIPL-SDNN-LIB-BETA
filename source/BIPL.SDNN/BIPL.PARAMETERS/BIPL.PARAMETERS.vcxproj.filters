@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BIPL_LIB_UTILITY.cpp" />
+    <ClCompile Include="BIPL_LIB_LEXIAL.cpp">
+      <Filter>LEXIAL</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_NUMERICAL_FORMULA_ANALYSIS.cpp">
+      <Filter>LEXIAL</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_PARAMETERS.cpp">
+      <Filter>PARAMETERS</Filter>
+    </ClCompile>
+    <ClCompile Include="BIPL_LIB_PARAMETERS_JUDGEMENT.cpp">
+      <Filter>PARAMETERS</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BIPL_LIB_UTILITY.h" />
+    <ClInclude Include="BIPL_LIB_LEXIAL.h">
+      <Filter>LEXIAL</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_NUMERICAL_FORMULA_ANALYSIS.h">
+      <Filter>LEXIAL</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_PARAMETER_BASE.h">
+      <Filter>PARAMETERS</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_PARAMETERS.h">
+      <Filter>PARAMETERS</Filter>
+    </ClInclude>
+    <ClInclude Include="BIPL_LIB_PARAMETERS_JUDGEMENT.h">
+      <Filter>PARAMETERS</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="LEXIAL">
+      <UniqueIdentifier>{9126514e-8452-475a-a2bf-21c85de94b38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PARAMETERS">
+      <UniqueIdentifier>{8dcf841b-bdde-4788-99bc-867863ca3f4d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

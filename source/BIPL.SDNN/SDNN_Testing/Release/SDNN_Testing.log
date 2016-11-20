@@ -1,0 +1,7 @@
+﻿  SDNN_Testing.cpp
+SDNN_Testing.cpp(55): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+SDNN_Testing.cpp(69): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  コード生成しています。
+  All 2417 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  コード生成が終了しました。
+  SDNN_Testing.vcxproj -> F:\BIPL.SDNN\Release\SDNN_Testing.exe

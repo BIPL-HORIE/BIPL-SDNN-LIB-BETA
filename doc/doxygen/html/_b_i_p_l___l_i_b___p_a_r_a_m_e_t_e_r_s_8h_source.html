@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>BIPL.SDNN.LIB: C:/Users/K_Horie/Desktop/GIT-BIPL-SDNN-LIB/BIPL.SDNN/BIPL.PARAMETERS/BIPL_LIB_PARAMETERS.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">BIPL.SDNN.LIB
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.10 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>総合概要</span></a></li>
+      <li><a href="pages.html"><span>諸情報</span></a></li>
+      <li><a href="namespaces.html"><span>名前空間</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e1870b190ff70df596611a72603bc9a0.html">BIPL.SDNN</a></li><li class="navelem"><a class="el" href="dir_df538e20b0d94229e7ca80850a691d56.html">BIPL.PARAMETERS</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">BIPL_LIB_PARAMETERS.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_b_i_p_l___l_i_b___p_a_r_a_m_e_t_e_r_s_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacebipl.html">bipl</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">namespace </span>parameters</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacebipl_1_1parameters_1_1judgement.html">   20</a></span>&#160;        <span class="keyword">namespace </span>judgement</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">class </span><a class="code" href="classbipl_1_1parameters_1_1judgement_1_1_j_u_d_g_e_m_e_n_t.html">JUDGEMENT</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html">   49</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html">PARAMETERS</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">class </span><a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_1_1_p_a_r_a_m_e_t_e_r_s___r_o_o_t.html">PARAMETERS_ROOT</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            std::unique_ptr&lt;PARAMETERS_ROOT&gt; pimpl_;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#aa7615f33ce6fd2b482b154a664facadb">PARAMETERS</a>(<span class="keyword">const</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html">PARAMETERS</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordtype">void</span> operator=(<span class="keyword">const</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html">PARAMETERS</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#aa7615f33ce6fd2b482b154a664facadb">PARAMETERS</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#abebce8e2da1711617fc88a1110452c44">~PARAMETERS</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#aa328606cb2ada63889a5b4be28abef50">LoadFile</a>(<span class="keyword">const</span> std::string parameter_file_name);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#aa328606cb2ada63889a5b4be28abef50">LoadFile</a>(std::stringstream &amp;parameter_stream);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#ab332bb2ca279fffb7a31110657acd061">OverwriteParameter</a>(<span class="keyword">const</span> std::string parameter_name, <span class="keyword">const</span> std::string &amp;parameter_content);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> content_type&gt;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#ab332bb2ca279fffb7a31110657acd061">OverwriteParameter</a>(<span class="keyword">const</span> std::string parameter_name, <span class="keyword">const</span> std::vector&lt;content_type&gt; parameter_content);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> content_type&gt;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#a2cc0ea98a472a1e4952b4f863ab49653">ReadParameter</a>(content_type &amp;out_parameter_content, <span class="keyword">const</span> std::string parameter_name, <span class="keyword">const</span> std::string default_parameter_content = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> content_type&gt;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#a2cc0ea98a472a1e4952b4f863ab49653">ReadParameter</a>(std::vector&lt;content_type&gt; &amp;out_parameter_content, <span class="keyword">const</span> std::string parameter_name, <span class="keyword">const</span> std::string default_parameter_content = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> content_type&gt;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#a04a027e207aa2db88ed45e2faa11fae2">ReadParameterWithJudgement</a>(content_type &amp;out_parameter_content, <span class="keyword">const</span> std::string parameter_name, <a class="code" href="classbipl_1_1parameters_1_1judgement_1_1_j_u_d_g_e_m_e_n_t.html">judgement::JUDGEMENT</a> &amp;judgement, std::string default_parameter_content = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> content_type&gt;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#a04a027e207aa2db88ed45e2faa11fae2">ReadParameterWithJudgement</a>(std::vector&lt;content_type&gt; &amp;out_parameter_content, <span class="keyword">const</span> std::string parameter_name, <a class="code" href="classbipl_1_1parameters_1_1judgement_1_1_j_u_d_g_e_m_e_n_t.html">judgement::JUDGEMENT</a> &amp;judgement, std::string default_parameter_content);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#a375c4086ef7a8d6a6ca49b20a1dd51ed">ListParameter</a>(std::string &amp;out_parameter_list)<span class="keyword">const</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#ad76af9a2e1fd28838b5aa15421fbf270">  148</a></span>&#160;            <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#ad76af9a2e1fd28838b5aa15421fbf270">operator&lt;&lt;</a>(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html">PARAMETERS</a>&amp; parameter)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                std::string list;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                parameter.<a class="code" href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#a375c4086ef7a8d6a6ca49b20a1dd51ed">ListParameter</a>(list);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                os &lt;&lt; list;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        };</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html_ab332bb2ca279fffb7a31110657acd061"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#ab332bb2ca279fffb7a31110657acd061">bipl::parameters::PARAMETERS::OverwriteParameter</a></div><div class="ttdeci">void OverwriteParameter(const std::string parameter_name, const std::string &amp;parameter_content)</div><div class="ttdoc">パラメータの登録＋上書き パラメータが存在していた場合は上書き，なかった場合は新たに登録する． コード�...</div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.cpp:247</div></div>
+<div class="ttc" id="namespacebipl_html"><div class="ttname"><a href="namespacebipl.html">bipl</a></div><div class="ttdef"><b>Definition:</b> BIPL_LIB_LEXIAL.cpp:12</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html_abebce8e2da1711617fc88a1110452c44"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#abebce8e2da1711617fc88a1110452c44">bipl::parameters::PARAMETERS::~PARAMETERS</a></div><div class="ttdeci">~PARAMETERS(void)</div><div class="ttdoc">デストラクタ，中身空 </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.cpp:216</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html_aa7615f33ce6fd2b482b154a664facadb"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#aa7615f33ce6fd2b482b154a664facadb">bipl::parameters::PARAMETERS::PARAMETERS</a></div><div class="ttdeci">PARAMETERS(void)</div><div class="ttdoc">コンストラクタ，中身はPIMPLの実体化 </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.cpp:215</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1judgement_1_1_j_u_d_g_e_m_e_n_t_html"><div class="ttname"><a href="classbipl_1_1parameters_1_1judgement_1_1_j_u_d_g_e_m_e_n_t.html">bipl::parameters::judgement::JUDGEMENT</a></div><div class="ttdoc">判定式クラスの純粋仮想関数 </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS_JUDGEMENT.h:23</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html_a375c4086ef7a8d6a6ca49b20a1dd51ed"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#a375c4086ef7a8d6a6ca49b20a1dd51ed">bipl::parameters::PARAMETERS::ListParameter</a></div><div class="ttdeci">void ListParameter(std::string &amp;out_parameter_list) const </div><div class="ttdoc">パラメータのリストを得る </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.cpp:565</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html_aa328606cb2ada63889a5b4be28abef50"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#aa328606cb2ada63889a5b4be28abef50">bipl::parameters::PARAMETERS::LoadFile</a></div><div class="ttdeci">void LoadFile(const std::string parameter_file_name)</div><div class="ttdoc">パラメータファイルからパラメータを引っ張ってきて登録する </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.cpp:220</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html_a2cc0ea98a472a1e4952b4f863ab49653"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#a2cc0ea98a472a1e4952b4f863ab49653">bipl::parameters::PARAMETERS::ReadParameter</a></div><div class="ttdeci">void ReadParameter(content_type &amp;out_parameter_content, const std::string parameter_name, const std::string default_parameter_content=&quot;&quot;)</div><div class="ttdoc">パラメータを読む </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.cpp:331</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_1_1_p_a_r_a_m_e_t_e_r_s___r_o_o_t_html"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_1_1_p_a_r_a_m_e_t_e_r_s___r_o_o_t.html">bipl::parameters::PARAMETERS::PARAMETERS_ROOT</a></div><div class="ttdoc">独自企画パラメータのPIMPL </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.cpp:23</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html_a04a027e207aa2db88ed45e2faa11fae2"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#a04a027e207aa2db88ed45e2faa11fae2">bipl::parameters::PARAMETERS::ReadParameterWithJudgement</a></div><div class="ttdeci">void ReadParameterWithJudgement(content_type &amp;out_parameter_content, const std::string parameter_name, judgement::JUDGEMENT &amp;judgement, std::string default_parameter_content=&quot;&quot;)</div><div class="ttdoc">パラメータを読み，条件に合わなかった場合コンソールから再入力を受ける </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.cpp:580</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html">bipl::parameters::PARAMETERS</a></div><div class="ttdoc">独自企画パラメータ </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.h:49</div></div>
+<div class="ttc" id="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s_html_ad76af9a2e1fd28838b5aa15421fbf270"><div class="ttname"><a href="classbipl_1_1parameters_1_1_p_a_r_a_m_e_t_e_r_s.html#ad76af9a2e1fd28838b5aa15421fbf270">bipl::parameters::PARAMETERS::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const PARAMETERS &amp;parameter)</div><div class="ttdoc">パラメータのリストをostreamに突っ込む </div><div class="ttdef"><b>Definition:</b> BIPL_LIB_PARAMETERS.h:148</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

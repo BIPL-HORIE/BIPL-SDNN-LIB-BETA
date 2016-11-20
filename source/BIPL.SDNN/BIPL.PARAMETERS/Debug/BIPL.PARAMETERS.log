@@ -1,0 +1,5 @@
+﻿  BIPL_LIB_PARAMETERS.cpp
+f:\bipl.sdnn\bipl.parameters\bipl_lib_parameters.cpp(437): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+f:\bipl.sdnn\bipl.parameters\bipl_lib_parameters.cpp(112): error C2143: 構文エラー: ';' が '}' の前にありません。
+  f:\bipl.sdnn\bipl.parameters\bipl_lib_parameters.cpp(204): note: コンパイル対象の関数 テンプレート インスタンス化 'void bipl::parameters::PARAMETERS::PARAMETERS_ROOT::LoadFile<std::ifstream>(std::ifstream &)' のリファレンスを確認してください
+f:\bipl.sdnn\bipl.parameters\bipl_lib_parameters.cpp(116): error C2143: 構文エラー: ';' が '}' の前にありません。

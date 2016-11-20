@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['operator_28_29',['operator()',['../classbipl_1_1sdnn_1_1base_1_1nn_1_1_s_d_n_n___n_n___p_p_1_1_c_h_o_o_s_e___l_e_s_s___p_o_t_e_n_t_i_a_l.html#ab4769e04f05da6a4c1fd60cbbea4447f',1,'bipl::sdnn::base::nn::SDNN_NN_PP::CHOOSE_LESS_POTENTIAL::operator()()'],['../classbipl_1_1sdnn_1_1analysis_1_1base_1_1_get_r_o_c_1_1_choose_high_potential.html#a7eb6fd2ee3ce882459b6822ff81f7c56',1,'bipl::sdnn::analysis::base::GetROC::ChooseHighPotential::operator()()'],['../classbipl_1_1sdnn_1_1analysis_1_1base_1_1_get_r_o_c.html#ad5e874410b0722c8b0e15431a1cd42fe',1,'bipl::sdnn::analysis::base::GetROC::operator()()']]],
+  ['output_5fneuron_5fnumber_5f',['output_neuron_number_',['../classbipl_1_1sdnn_1_1base_1_1_s_d_n_n___n_n___v_i_r_t_u_a_l.html#a52c43a0fb434f5d60f3bf767810f2e8c',1,'bipl::sdnn::base::SDNN_NN_VIRTUAL']]],
+  ['ovo_5f',['ovo_',['../classbipl_1_1sdnn_1_1parameter__property_1_1_p_a_r_a_m___n_n___s_p___m_u_l_t_i___c_l_a_s_s___r_e6b1eb90a29ddaa3422afbb823eb4f70d.html#a35cf19fdd7867b7c3b535686d6d7ee8e',1,'bipl::sdnn::parameter_property::PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_']]],
+  ['ovr_5f',['ovr_',['../classbipl_1_1sdnn_1_1parameter__property_1_1_p_a_r_a_m___n_n___s_p___m_u_l_t_i___c_l_a_s_s___r_e6b1eb90a29ddaa3422afbb823eb4f70d.html#af50b62cd781d47acab7173dcd668250d',1,'bipl::sdnn::parameter_property::PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_']]]
+];
