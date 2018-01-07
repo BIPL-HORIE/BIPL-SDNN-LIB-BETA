@@ -10,7 +10,10 @@
 
 void file2sample(const std::string &filename, std::vector<std::vector<double>> &input, std::vector<double> &target)
 {
-	std::ifstream train_sample(filename);
+	std::ifstream train_sample;
+
+	bipl::utility::OpenFile(train_sample, filename);
+
 	std::string buffer;
 	while (std::getline(train_sample, buffer, '\n'))
 	{
@@ -46,9 +49,9 @@ int main(int argc, char* argv[])
 	bipl::utility::OpenFile(output_file, argv[3]);
 
 	std::string nn_type;
-	sdnn.GetParameter(nn_type, bipl::sdnn::parameter_property::PARAM_NN_TYPE::property_.name_);
+	sdnn.GetParameter(nn_type, bipl::sdnn::parameter_property::PARAM_SDNN_TYPE::property_.name_);
 
-	if (nn_type == bipl::sdnn::parameter_property::PARAM_NN_TYPE::CNT_NN_TYPE_::pp_)
+	if (nn_type == bipl::sdnn::parameter_property::PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::function_approximation_)
 	{
 		double rmse = 0;
 		double result;
@@ -60,9 +63,9 @@ int main(int argc, char* argv[])
 		}
 		rmse /= input.size();
 		rmse = sqrt(rmse);
-		std::cout << "rmse = " << rmse;
+		std::cout << "rmse = " << rmse << std::endl;
 	}
-	else if (nn_type == bipl::sdnn::parameter_property::PARAM_NN_TYPE::CNT_NN_TYPE_::sp_)
+	else if (nn_type == bipl::sdnn::parameter_property::PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::pattern_recognition_)
 	{
 		int correct = 0;
 		double result;

@@ -5,24 +5,34 @@
 #include <omp.h>
 using namespace bipl::sdnn::parameter_property;
 
+//問題の種類
+const std::string PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::pattern_recognition_("pattern_recognition");
+const std::string PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::function_approximation_("function_approximation");
+const std::vector<std::string> PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::list_({pattern_recognition_,function_approximation_});
+PARAM_PROPERTY_SET PARAM_SDNN_TYPE::property_("ISSUE\\type", CNT_SDNN_TYPE_::function_approximation_, std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_SDNN_TYPE_::list_));
+
+//FAの場合
+//SDNNの出力幅
+PARAM_PROPERTY_SET PARAM_NN_PP_OUTPUT_RANGE::property_("ISSUE\\FA\\output_range", "[0, 1]", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_RANGE>());
+//SDNNの出力刻み
+PARAM_PROPERTY_SET PARAM_NN_PP_OUTPUT_QUANTIZATION_STEP_SIZE::property_("ISSUE\\FA\\required_step_size", "0,01", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_IN_RANGE<double>>(0.0001, 1));
+
+//PRの場合
+//カテゴリ数
+PARAM_PROPERTY_SET PARAM_NN_SP_CATEGORY_NUMBER::property_("ISSUE\\PR\\category_number", "2", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_BIGGER_THAN<unsigned int>>(2));
+
+//多クラス近似手法
+const std::string PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::ovo_("1v1");
+const std::string PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::ovr_("1vR");
+const std::vector<std::string> PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::list_({ ovo_,ovr_ });
+PARAM_PROPERTY_SET PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::property_("ISSUE\\PR\\multi_class_recognition", CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::ovo_, std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::list_));
+
 //入力素子数
-PARAM_PROPERTY_SET PARAM_INPUT_NUMBER::property_("SDNN\\input_number", "2", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_BIGGER_THAN<unsigned int>>(2));
+PARAM_PROPERTY_SET PARAM_INPUT_NUMBER::property_("ISSUE\\input_number", "2", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_BIGGER_THAN<unsigned int>>(2));
 
-//SD対応関係定義手法
-const std::string PARAM_SD_METHOD::CNT_SD_METHOD::mutual_("mutual");
-const std::string PARAM_SD_METHOD::CNT_SD_METHOD::file_("file");
-const std::string PARAM_SD_METHOD::CNT_SD_METHOD::saved_("saved");
-const std::vector<std::string> PARAM_SD_METHOD::CNT_SD_METHOD::list_({mutual_, file_, saved_});
-PARAM_PROPERTY_SET PARAM_SD_METHOD::property_("SDNN\\SD\\method", CNT_SD_METHOD::mutual_, std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_SD_METHOD::list_));
-
-//SD定義，ファイル指定時のファイル名
-PARAM_PROPERTY_SET PARAM_SD_METHOD::PARAM_FILE::property_("SDNN\\SD\\filename","",std::make_unique<bipl::parameters::judgement::JUDGEMENT_FILE_EXIST>());
-
-//SD定義，saved指定時の文字列名
-PARAM_PROPERTY_SET PARAM_SD_METHOD::PARAM_LINE::property_("SDNN\\SD\\line", "[(0,1),(1,0)]", nullptr);
-
+//PC
 //パターンコーディングのn
-PARAM_PROPERTY_SET PARAM_SD_PC_N::property_("SDNN\\SD\\PC\\n", "100", std::make_unique<PARAM_SD_PC_N::JUDGEMENT_N_>());
+PARAM_PROPERTY_SET PARAM_SD_PC_N::property_("SDNN\\PC\\n", "128", std::make_unique<PARAM_SD_PC_N::JUDGEMENT_N_>());
 bool PARAM_SD_PC_N::JUDGEMENT_N_::judgement(bipl::parameters::PARAMETERS *parameters, std::string parameter_name, std::string default_parameter_content)const
 {
 	int n;
@@ -30,13 +40,12 @@ bool PARAM_SD_PC_N::JUDGEMENT_N_::judgement(bipl::parameters::PARAMETERS *parame
 	return (n >= 2 && (n % 2 == 0));
 }
 
-PARAM_PROPERTY_SET PARAM_SD_PC_TYPE::property_("SDNN\\SD\\PC\\type", "[]", std::make_unique<bipl::sdnn::parameter_property::PARAM_SD_PC_TYPE::JUDGEMENT_PC_TYPE_>(0,0));
+PARAM_PROPERTY_SET PARAM_SD_PC_TYPE::property_("SDNN\\PC\\input_type_and_creation_method", "[]", std::make_unique<bipl::sdnn::parameter_property::PARAM_SD_PC_TYPE::JUDGEMENT_PC_TYPE_>(0,0));
 const std::string PARAM_SD_PC_TYPE::CNT_INPUT_TYPE_::numerical_("NUMERICAL");
-const std::string PARAM_SD_PC_TYPE::CNT_INPUT_TYPE_::symbol_("SYMBOL");
+const std::string PARAM_SD_PC_TYPE::CNT_INPUT_TYPE_::symbol_("SYMBOLIC");
 const std::string PARAM_SD_PC_TYPE::CNT_PC_METHOD_::random_inverse_("RANDOM_INVERSE");
-const std::string PARAM_SD_PC_TYPE::CNT_PC_METHOD_::interpolation_("INTERPOLATION");
-const std::string PARAM_SD_PC_TYPE::CNT_PC_METHOD_::correlation_tree_("CORRELATION_TREE");
-
+const std::string PARAM_SD_PC_TYPE::CNT_PC_METHOD_::correlation_matrix_("CORRELATION_MATRIX");
+const std::string PARAM_SD_PC_TYPE::CNT_PC_METHOD_::saved_("SAVED");
 
 bool bipl::sdnn::parameter_property::PARAM_SD_PC_TYPE::JUDGEMENT_PC_TYPE_::judgement(bipl::parameters::PARAMETERS *parameters, std::string parameter_name, std::string default_parameter_content)const
 {
@@ -56,17 +65,16 @@ bool bipl::sdnn::parameter_property::PARAM_SD_PC_TYPE::JUDGEMENT_PC_TYPE_::judge
 			if (type[0] != CNT_INPUT_TYPE_::numerical_ && type[0] != CNT_INPUT_TYPE_::symbol_)
 				return 0;
 
-
 			type[2].erase(--type[2].end());
 			type[2].erase(--type[2].end());
 
-			if (type[0] == CNT_INPUT_TYPE_::numerical_)
+			if (type[1] == CNT_PC_METHOD_::random_inverse_)
 			{
-				std::vector<std::string> q_make;
-				bipl::lexial::Split(q_make, type[1], ',');
+				std::vector<std::string> q_r;
+				bipl::lexial::Split(q_r, type[2], ',');
 				try
 				{
-					int q = stoi(q_make[0]);
+					int q = stoi(q_r[0]);
 					if (q <= 0)
 						return 0;
 				}
@@ -74,56 +82,58 @@ bool bipl::sdnn::parameter_property::PARAM_SD_PC_TYPE::JUDGEMENT_PC_TYPE_::judge
 				{
 					return 0;
 				}
-
-				if (q_make[1] == CNT_PC_METHOD_::random_inverse_)
+				try
 				{
-					int r = std::stoi(type[2]);
+					int r = std::stoi(q_r[1]);
 					if (r <= 0 || r >= n_ / 2)
 						return 0;
 				}
-				else if (q_make[1] == CNT_PC_METHOD_::interpolation_)
+				catch (...)
 				{
-					int s = std::stoi(type[2]);
-					if (s <= 0 || n_ % s != 0)
+					return 0;
+				}
+			}
+			else if (type[1] == CNT_PC_METHOD_::correlation_matrix_)
+			{
+				std::vector<std::string> f_b_i_p;
+				bipl::lexial::Split(f_b_i_p, type[2], ',');
+
+				try
+				{
+					int b = stoi(f_b_i_p[1]);
+					if (b <= 0)
+						return 0;
+					int i = stoi(f_b_i_p[2]);
+					if (i <= 0)
+						return 0;
+					double p = stof(f_b_i_p[3]);
+					if (p <= 0)
 						return 0;
 				}
-				else
-					return 0;
-			}
-			else if (type[0] == CNT_INPUT_TYPE_::symbol_)
-			{
-				std::vector<std::string> q_make;
-				bipl::lexial::Split(q_make, type[1], ',');
-				switch (q_make.size())
+				catch (...)
 				{
-				case 1:
-					if (q_make[0] == CNT_PC_METHOD_::correlation_tree_)
-					{
-						std::ifstream file_buffer(type[2]);
-						if (!file_buffer.is_open())
-							return 0;
-						file_buffer.close();
-					}
-					break;
-				case 2:
-					if (q_make[1] == CNT_PC_METHOD_::random_inverse_)
-					{
-						try
-						{
-							int q = stoi(q_make[0]);
-							if (q <= 0)
-								return 0;
-						}
-						catch (...)
-						{
-							return 0;
-						}
-						int r = std::stoi(type[2]);
-						if (r <= 0 || r >= n_ / 2)
-							return 0;
-					}
-					break;
-				default:
+					return 0;
+				}
+			}
+			else if (type[1] == CNT_PC_METHOD_::saved_)
+			{
+				std::vector<std::string> f_b_i_p;
+				bipl::lexial::Split(f_b_i_p, type[2], ',');
+
+				try
+				{
+					int b = stoi(f_b_i_p[1]);
+					if (b <= 0)
+						return 0;
+					int i = stoi(f_b_i_p[2]);
+					if (i <= 0)
+						return 0;
+					double p = stof(f_b_i_p[3]);
+					if (p <= 0)
+						return 0;
+				}
+				catch (...)
+				{
 					return 0;
 				}
 			}
@@ -134,12 +144,10 @@ bool bipl::sdnn::parameter_property::PARAM_SD_PC_TYPE::JUDGEMENT_PC_TYPE_::judge
 	return 1;
 }
 
-PARAM_PROPERTY_SET PARAM_SD_PC_RANDOM_SEED::property_("SDNN\\SD\\PC\\random_seed", RANDOM_DEVICE, std::make_unique<bipl::parameters::judgement::JUDGEMENT_RANDOMSEED>());
+PARAM_PROPERTY_SET PARAM_SD_PC_RANDOM_SEED::property_("SDNN\\PC\\random_seed", HARDWARE_ENTROPY, std::make_unique<bipl::parameters::judgement::JUDGEMENT_RANDOMSEED>());
 
-const std::string PARAM_NN_TYPE::CNT_NN_TYPE_::pp_("PP");
-const std::string PARAM_NN_TYPE::CNT_NN_TYPE_::sp_("SP");
-const std::vector<std::string> PARAM_NN_TYPE::CNT_NN_TYPE_::list_({ pp_,sp_ });
-PARAM_PROPERTY_SET PARAM_NN_TYPE::property_("SDNN\\NN\\type", "", std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_NN_TYPE_::list_));
+const std::string bipl::sdnn::parameter_property::PARAM_NN_TRAINING_END::CNT_NN_TRAINING_END_::itr_("iteration");
+const std::string bipl::sdnn::parameter_property::PARAM_NN_TRAINING_END::CNT_NN_TRAINING_END_::rmse_("rmse");
 
 bool PARAM_NN_TRAINING_END::JUDGEMENT_TRAIN_METHOD_::judgement(bipl::parameters::PARAMETERS *parameters, const std::string parameter_name, const std::string default_parameter_content)const
 {
@@ -155,7 +163,7 @@ bool PARAM_NN_TRAINING_END::JUDGEMENT_TRAIN_METHOD_::judgement(bipl::parameters:
 	
 		if (train_method_buffer.size() != 2)
 			return false;
-		if (train_method_buffer[0] == "for")
+		if (train_method_buffer[0] == CNT_NN_TRAINING_END_::itr_)
 		{
 			train_method_buffer[1].erase(--train_method_buffer[1].end());
 			try
@@ -167,7 +175,7 @@ bool PARAM_NN_TRAINING_END::JUDGEMENT_TRAIN_METHOD_::judgement(bipl::parameters:
 				return false;
 			}
 		}
-		else if (train_method_buffer[0] == "rmse")
+		else if (train_method_buffer[0] == CNT_NN_TRAINING_END_::rmse_)
 		{
 			train_method_buffer[1].erase(--train_method_buffer[1].end());
 			std::vector<std::string> argument;
@@ -192,23 +200,28 @@ bool PARAM_NN_TRAINING_END::JUDGEMENT_TRAIN_METHOD_::judgement(bipl::parameters:
 	return true;
 }
 
+//SD
+//SD対応関係定義手法
+const std::string PARAM_SD_METHOD::CNT_SD_METHOD::mutual_("mutual");
+const std::string PARAM_SD_METHOD::CNT_SD_METHOD::file_("file");
+const std::string PARAM_SD_METHOD::CNT_SD_METHOD::saved_("saved");
+const std::vector<std::string> PARAM_SD_METHOD::CNT_SD_METHOD::list_({ mutual_, file_, saved_ });
+PARAM_PROPERTY_SET PARAM_SD_METHOD::property_("SDNN\\SD\\combination_setting", CNT_SD_METHOD::mutual_, std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_SD_METHOD::list_));
+
+//SD定義，ファイル指定時のファイル名
+PARAM_PROPERTY_SET PARAM_SD_METHOD::PARAM_FILE::property_("SDNN\\SD\\filename", "", std::make_unique<bipl::parameters::judgement::JUDGEMENT_FILE_EXIST>());
+
+//SD定義，saved指定時の文字列名
+PARAM_PROPERTY_SET PARAM_SD_METHOD::PARAM_LINE::property_("SDNN\\SD\\line", "[(0,1),(1,0)]", nullptr);
+
+
+
+
 //NNの学習方法
-PARAM_PROPERTY_SET PARAM_NN_TRAINING_END::property_("SDNN\\NN\\train_method", "for(10)",std::make_unique<PARAM_NN_TRAINING_END::JUDGEMENT_TRAIN_METHOD_>());
+PARAM_PROPERTY_SET PARAM_NN_TRAINING_END::property_("SDNN\\NN\\completion_condition", "for(10)",std::make_unique<PARAM_NN_TRAINING_END::JUDGEMENT_TRAIN_METHOD_>());
 
-//PPの出力幅
-PARAM_PROPERTY_SET PARAM_NN_PP_OUTPUT_RANGE::property_("SDNN\\NN\\output_range", "[-5,5]", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_RANGE>());
 
-PARAM_PROPERTY_SET PARAM_NN_PP_OUTPUT_QUANTIZATION_STEP_SIZE::property_("SDNN\\NN\\output_quantization_step_size","0,01",std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_IN_RANGE<double>>(0.0001,1));
-
-const std::string PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::ovo_("1v1");
-const std::string PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::ovr_("1vR");
-const std::vector<std::string> PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::list_({ ovo_,ovr_ });
-
-PARAM_PROPERTY_SET PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::property_("SDNN\\NN\\multi_class_recognition_method", CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::ovo_, std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_NN_SP_MULTI_CLASS_RECOGNITION_METHOD_::list_));
-
-PARAM_PROPERTY_SET PARAM_NN_SP_CATEGORY_NUMBER::property_("SDNN\\NN\\category_number", "2", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_BIGGER_THAN<unsigned int>>(2));
-
-PARAM_PROPERTY_SET PARAM_NN_RANDOM_SEED::property_("SDNN\\NN\\random_seed", RANDOM_DEVICE, std::make_unique<bipl::parameters::judgement::JUDGEMENT_RANDOMSEED>());
+PARAM_PROPERTY_SET PARAM_NN_RANDOM_SEED::property_("SDNN\\NN\\random_seed", HARDWARE_ENTROPY, std::make_unique<bipl::parameters::judgement::JUDGEMENT_RANDOMSEED>());
 
 PARAM_PROPERTY_SET PARAM_NN_INITIAL_VALUE_RANGE::property_("SDNN\\NN\\initial_value_range", "[-5,5]", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_RANGE>());
 
@@ -216,15 +229,15 @@ PARAM_PROPERTY_SET PARAM_NN_INITIAL_VALUE_RANGE::property_("SDNN\\NN\\initial_va
 const std::string PARAM_OPTION_PRINT_PROGRESSION::CNT_OPTION_PRINT_PROGRESSION::y_("Y");
 const std::string PARAM_OPTION_PRINT_PROGRESSION::CNT_OPTION_PRINT_PROGRESSION::n_("N");
 const std::vector<std::string> PARAM_OPTION_PRINT_PROGRESSION::CNT_OPTION_PRINT_PROGRESSION::list_({y_,n_});
-PARAM_PROPERTY_SET PARAM_OPTION_PRINT_PROGRESSION::property_("SDNN\\OPTION\\print_progression", CNT_OPTION_PRINT_PROGRESSION::y_, std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_OPTION_PRINT_PROGRESSION::list_));
+PARAM_PROPERTY_SET PARAM_OPTION_PRINT_PROGRESSION::property_("APP\\print_progression", CNT_OPTION_PRINT_PROGRESSION::y_, std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_OPTION_PRINT_PROGRESSION::list_));
 
 //OPTION OPENMP利用
 const std::string PARAM_OPTION_MULTI_THREAD_USE::CNT_OPTION_MULTI_THREAD_USE::y_("Y");
 const std::string PARAM_OPTION_MULTI_THREAD_USE::CNT_OPTION_MULTI_THREAD_USE::n_("N");
 const std::vector<std::string> PARAM_OPTION_MULTI_THREAD_USE::CNT_OPTION_MULTI_THREAD_USE::list_({ y_,n_ });
-PARAM_PROPERTY_SET PARAM_OPTION_MULTI_THREAD_USE::property_("SDNN\\OPTION\\MULTI_THREAD\\use", CNT_OPTION_MULTI_THREAD_USE::y_, std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_OPTION_MULTI_THREAD_USE::list_));
+PARAM_PROPERTY_SET PARAM_OPTION_MULTI_THREAD_USE::property_("APP\\multi_thread", CNT_OPTION_MULTI_THREAD_USE::n_, std::make_unique<bipl::parameters::judgement::JUDGEMENT_STRING_LIST>(CNT_OPTION_MULTI_THREAD_USE::list_));
 
 //thread number
-PARAM_PROPERTY_SET PARAM_OPTION_MULTI_THREAD_USE::PARAM_OPTION_MULTI_THREAD_NUMBER::property_("SDNN\\OPTION\\MULTI_THREAD\\thread_number", "1", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_IN_RANGE<unsigned int>>(1, omp_get_num_procs()));
+PARAM_PROPERTY_SET PARAM_OPTION_MULTI_THREAD_USE::PARAM_OPTION_MULTI_THREAD_NUMBER::property_("APP\\thread_number", "1", std::make_unique<bipl::parameters::judgement::JUDGEMENT_IS_IN_RANGE<unsigned int>>(1, omp_get_num_procs()));
 
-PARAM_PROPERTY_SET PARAM_OPTION_SAVE_FILENAME::property_("SDNN\\OPTION\\save_filename", "autosave.bin", nullptr);
+PARAM_PROPERTY_SET PARAM_OPTION_SAVE_FILENAME::property_("APP\\training_result_filename", "autosave.bin", nullptr);

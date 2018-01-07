@@ -30,6 +30,23 @@ namespace bipl
 				}
 			};
 
+			class PARAM_SDNN_TYPE 
+			{
+			private:
+				PARAM_SDNN_TYPE() = delete;
+			public:
+				class CNT_SDNN_TYPE_
+				{
+				private:
+					CNT_SDNN_TYPE_() = delete;
+				public:
+					static const std::string pattern_recognition_;
+					static const std::string function_approximation_;
+					static const std::vector<std::string> list_;
+				};
+				static PARAM_PROPERTY_SET property_;
+			};
+
 			class PARAM_INPUT_NUMBER/**/
 			{
 			private:
@@ -101,7 +118,7 @@ namespace bipl
 				};
 			};
 
-			class PARAM_SD_PC_TYPE/**/
+			class PARAM_SD_PC_TYPE
 			{
 			private:
 				PARAM_SD_PC_TYPE() = delete;
@@ -122,8 +139,8 @@ namespace bipl
 					CNT_PC_METHOD_() = delete;
 				public:
 					static const std::string random_inverse_;
-					static const std::string interpolation_;
-					static const std::string correlation_tree_;
+					static const std::string correlation_matrix_;
+					static const std::string saved_;
 				};
 
 				class JUDGEMENT_PC_TYPE_ :public bipl::parameters::judgement::JUDGEMENT
@@ -134,7 +151,7 @@ namespace bipl
 				public:
 					//! コンストラクタ
 					JUDGEMENT_PC_TYPE_(int input_number, int n) :bipl::parameters::judgement::JUDGEMENT(
-						"String vector whose element is NUMERICAL(RANDOM_INVERSE(r)) (1 =< r < n/2), NUMERICAL(INTERPOLATION(r)) (r > 2 && n % r == 0), SYMBOL(RANDOM_INVERSE(r)) (1 =< r < n/2),or SYMBOL(CORRELATION_TREE(filaname)),\n the number of elements have to equal to the number of inputs.") {
+						"String vector whose element is NUMERICAL(RANDOM_INVERSE(r)) (1 =< r < n/2), NUMERICAL(INTERPOLATION(r)) (r > 2 && n % r == 0), SYMBOL(RANDOM_INVERSE(r)) (1 =< r < n/2),or SYMBOL(CORRELATION_TREE(filename)),\n the number of elements have to equal to the number of inputs.") {
 						input_number_ = input_number; n_ = n;
 					}
 					//! デコンストラクタ
@@ -159,33 +176,24 @@ namespace bipl
 				static PARAM_PROPERTY_SET property_;
 			};
 
-			class PARAM_NN_TYPE/**/
-			{
-			private:
-				PARAM_NN_TYPE() = delete;
-
-			public:
-				class CNT_NN_TYPE_
-				{
-				private:
-					CNT_NN_TYPE_() = delete;
-				public:
-					static const std::string pp_;
-					static const std::string sp_;
-					static const std::vector<std::string> list_;
-				};
-				static PARAM_PROPERTY_SET property_;
-			};
-
 			class PARAM_NN_TRAINING_END/**/
 			{
 			private:
 				PARAM_NN_TRAINING_END() = delete;
+
 			public:
+				class CNT_NN_TRAINING_END_
+				{
+				private:
+					CNT_NN_TRAINING_END_() = delete;
+				public:
+					static const std::string itr_;
+					static const std::string rmse_;
+				};
 				class JUDGEMENT_TRAIN_METHOD_ :public bipl::parameters::judgement::JUDGEMENT
 				{
 				public:
-					JUDGEMENT_TRAIN_METHOD_() :JUDGEMENT("example:\nrmse(rmse_threashold, max number of iterations)\nfor(specic number of iterations)\nrmse(0.01,100)+for(10)") {}
+					JUDGEMENT_TRAIN_METHOD_() :JUDGEMENT("example:\n" + CNT_NN_TRAINING_END_::rmse_ + "(rmse_threashold, max number of iterations)\n"+CNT_NN_TRAINING_END_::itr_+"(specic number of iterations)\n" + CNT_NN_TRAINING_END_::rmse_ +"(0.01,100)+" + CNT_NN_TRAINING_END_::itr_ + "(10)") {}
 					~JUDGEMENT_TRAIN_METHOD_() {}
 					bool judgement(bipl::parameters::PARAMETERS *parameters, const std::string parameter_name, const std::string default_parameter_content = "")const;
 				};

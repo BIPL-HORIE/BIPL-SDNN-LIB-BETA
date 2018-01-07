@@ -45,7 +45,7 @@ namespace bipl
 		void Wait(void);
 
 		/*! @brief メルセンヌツイスタのイニット
-		シード値がベクトルだった場合そのまま，random_deviceだった場合ハード乱数を10個準備しシードとして利用．
+		シード値がベクトルだった場合そのまま，hardware_entropyだった場合ハード乱数を10個準備しシードとして利用．
 		使ったシード値でパラメータを上書きする．
 		@param[out] out_mt 初期化したメルセンヌツイスタ出力
 		@param[in,out] parameter メルセンヌツイスタのシード値が含まれたパラメータリスト

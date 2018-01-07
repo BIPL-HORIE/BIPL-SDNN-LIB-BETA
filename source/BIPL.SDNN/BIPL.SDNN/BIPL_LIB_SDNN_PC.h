@@ -33,6 +33,19 @@ namespace bipl
 				@return なし．
 				*/
 				void SavePattern(unsigned int* binary, const std::vector<bool> &pattern);
+
+				/*! @brief bool表現のパターン2つの相関値を計算．
+				@param[in] pattern1	1つめ
+				@param[in] pattern2	2つめ
+				@return pattern1とpattern2の相関値．
+				*/
+				double CalcCorrelation(const std::vector<bool> & pattern1, const std::vector<bool> & pattern2);
+
+				/*! @brief 相関係数ファイルを開き，改行を\\，"，"を$に置き換え，文字列として出力
+				@param[in] filename 相関係数ファイル名
+				@return 変換後文字列
+				*/
+				std::string CorrelationMatrixFile2Strings(const std::string &filename);
 			}
 			class SDNN_PC
 			{
@@ -55,21 +68,29 @@ namespace bipl
 				*/
 				void RandomInverse(const int q, const int r, std::mt19937 &mt);
 
-				/*! @brief 補間法によるパターン作成
-				@param[in] r 代表パターン数
+				/*! @brief 相関行列によるパターン作成
+				@param[in] correlation_matrix 相関行列
+				@param[in] batch_n 分割した小さいパターンのサイズ
+				@param[in] iteration 最大反復回数，これを超えても精度が満たされない場合，全てやり直す．
+				　　　　　　　　　　 難度か試し，それでも達成できなければ精度を悪くし，実行する．
+				@param[in] precision 求める精度
 				@param[in] mt メルセンヌツイスタ
 				@return なし．
 				*/
-				void Interpolation(const int q, const int r, std::mt19937 &mt);
+				void CorrelationMatrix(const std::vector<std::vector<double>> &correlation_matrix, const int batch_n, const int max_iteration, const double precision, std::mt19937 &mt, const bool multi_core);
 
-				/*! @brief シンボルツリーによるパターン作成
-				@param[in] tree_filename　ツリーのファイル名
-				@param[in] mt メルセンヌツイスタ
-				@return なし．
-				*/
-				void SymbolTree(const std::string &tree_filename, std::mt19937 &mt);
+				/*! @brief 相関行列によるパターン作成
+				@param[in] correlation_matrix_filename 相関行列ファイル名
+				@param[in] batch_n 分割した小さいパターンのサイズ
+				@param[in] iteration 最大反復回数，これを超えても精度が満たされない場合，全てやり直す．
+				　　　　　　　　　　 難度か試し，それでも達成できなければ精度を悪くし，実行する．
+						   @param[in] precision 求める精度
+						   @param[in] mt メルセンヌツイスタ
+						   @return なし．
+						   */
+				void CorrelationMatrix(const std::string &correlation_matrix_filename, const int batch_n, const int max_iteration, const double precision, std::mt19937 &mt, const bool multi_core);
 
-				public:		
+			public:		
 				//! コンストラクタ
 				SDNN_PC(void);
 				//! デコンストラクタ
@@ -81,7 +102,7 @@ namespace bipl
 				@param[in] mt メルセンヌツイスタ
 				@return なし．
 				*/
-				void InitPC(const int n, const std::string &pattern_type, std::mt19937 &mt);
+				void InitPC(const int n, const std::string &pattern_type, std::mt19937 &mt, const bool multi_core = false);
 
 				/*! @brief inputに対応するバイナリを返す．
 				@param[in] input 何番目のバイナリを返すか

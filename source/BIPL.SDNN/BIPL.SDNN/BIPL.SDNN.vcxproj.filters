@@ -31,9 +31,6 @@
     <Filter Include="PARAMETERS">
       <UniqueIdentifier>{d9030002-0abe-4d8c-827d-8db1761decc0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SDNN\BASE\PC\SYMBOL">
-      <UniqueIdentifier>{8a61ce48-047e-4bac-a7fb-bef07256ec49}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SDNN\SDNN_PARAMETERS">
       <UniqueIdentifier>{64cf20ca-ffdd-4bef-bbd2-cadbfac2d353}</UniqueIdentifier>
     </Filter>
@@ -84,9 +81,6 @@
     <ClInclude Include="..\BIPL.PARAMETERS\BIPL_LIB_UTILITY.h">
       <Filter>PARAMETERS</Filter>
     </ClInclude>
-    <ClInclude Include="BIPL_LIB_SDNN_PC_SYMBOL.h">
-      <Filter>SDNN\BASE\PC\SYMBOL</Filter>
-    </ClInclude>
     <ClInclude Include="BIPL_LIB_SDNN_PARAMETERS.h">
       <Filter>SDNN\SDNN_PARAMETERS</Filter>
     </ClInclude>
@@ -133,9 +127,6 @@
     </ClCompile>
     <ClCompile Include="..\BIPL.PARAMETERS\BIPL_LIB_UTILITY.cpp">
       <Filter>PARAMETERS</Filter>
-    </ClCompile>
-    <ClCompile Include="BIPL_LIB_SDNN_PC_SYMBOL.cpp">
-      <Filter>SDNN\BASE\PC\SYMBOL</Filter>
     </ClCompile>
     <ClCompile Include="BIPL_LIB_SDNN_PARAMETERS.cpp">
       <Filter>SDNN\SDNN_PARAMETERS</Filter>

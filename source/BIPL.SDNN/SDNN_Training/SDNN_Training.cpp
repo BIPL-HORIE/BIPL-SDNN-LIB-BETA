@@ -11,7 +11,9 @@
 
 void file2sample(const std::string &filename, std::vector<std::vector<double>> &input, std::vector<double> &target)
 {
-	std::ifstream train_sample(filename);
+	std::ifstream train_sample;
+
+	bipl::utility::OpenFile(train_sample, filename);
 	std::string buffer;
 	while (std::getline(train_sample, buffer))
 	{
@@ -62,11 +64,11 @@ int main(int argc, char* argv[])
 		<< std::chrono::duration_cast<std::chrono::milliseconds>(diff2).count()
 		<< " msec."
 		<< std::endl;
-
+	
 	std::string nn_type;
-	sdnn.GetParameter(nn_type, bipl::sdnn::parameter_property::PARAM_NN_TYPE::property_.name_);
+	sdnn.GetParameter(nn_type, bipl::sdnn::parameter_property::PARAM_SDNN_TYPE::property_.name_);
 
-	if (nn_type == bipl::sdnn::parameter_property::PARAM_NN_TYPE::CNT_NN_TYPE_::pp_)
+	if (nn_type == bipl::sdnn::parameter_property::PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::function_approximation_)
 	{
 		auto target_itr = target.begin();
 		double rmse = 0;
@@ -78,7 +80,7 @@ int main(int argc, char* argv[])
 		rmse = sqrt(rmse);
 		std::cout << "rmse = " << rmse << std::endl;
 	}
-	else if (nn_type == bipl::sdnn::parameter_property::PARAM_NN_TYPE::CNT_NN_TYPE_::sp_)
+	else if (nn_type == bipl::sdnn::parameter_property::PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::pattern_recognition_)
 	{
 		auto target_itr = target.begin();
 		int correct = 0;

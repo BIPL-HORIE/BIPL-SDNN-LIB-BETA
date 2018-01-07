@@ -3,6 +3,7 @@
 #include "BIPL_LIB_SDNN_SD_VIRTUAL.h"
 #include "BIPL_LIB_SDNN_FACTORY.h"
 #include "BIPL_LIB_SDNN_PARAMETERS.h"
+#include "BIPL_LIB_SDNN_PC.h"
 
 #include "BIPL_LIB_PARAMETERS.h"
 #include "BIPL_LIB_LEXIAL.h"
@@ -56,16 +57,16 @@ namespace bipl
 			if ((result_buffer = parameter_property::PARAM_SD_PC_TYPE::property_.Check(check_parameter)) != "")
 				return result_buffer + "\n";
 
-			if ((result_buffer = parameter_property::PARAM_NN_TYPE::property_.Check(check_parameter)) != "")
+			if ((result_buffer = parameter_property::PARAM_SDNN_TYPE::property_.Check(check_parameter)) != "")
 				return result_buffer + "\n";
 
-			std::string nn_type;
-			parameter_property::PARAM_NN_TYPE::property_.Read(nn_type,check_parameter);
+			std::string issue_type;
+			parameter_property::PARAM_SDNN_TYPE::property_.Read(issue_type,check_parameter);
 
 			if ((result_buffer = parameter_property::PARAM_NN_INITIAL_VALUE_RANGE::property_.Check(check_parameter)) != "")
 				return result_buffer + "\n";
 
-			if (nn_type == parameter_property::PARAM_NN_TYPE::CNT_NN_TYPE_::pp_)
+			if (issue_type == parameter_property::PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::function_approximation_)
 			{
 				if ((result_buffer = parameter_property::PARAM_NN_PP_OUTPUT_RANGE::property_.Check(check_parameter)) != "")
 					return result_buffer + "\n";
@@ -77,7 +78,7 @@ namespace bipl
 				if ((result_buffer = parameter_property::PARAM_NN_PP_OUTPUT_QUANTIZATION_STEP_SIZE::property_.Check(check_parameter)) != "")
 					return result_buffer + "\n";
 			}
-			else if(nn_type == parameter_property::PARAM_NN_TYPE::CNT_NN_TYPE_::sp_)
+			else if(issue_type == parameter_property::PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::pattern_recognition_)
 			{
 				if ((result_buffer = parameter_property::PARAM_NN_SP_CATEGORY_NUMBER::property_.Check(check_parameter)) != "")
 					return result_buffer + "\n";
@@ -89,7 +90,6 @@ namespace bipl
 			{
 				bipl::utility::error::BugFound(0x206);
 			}
-
 			if ((result_buffer = parameter_property::PARAM_NN_TRAINING_END::property_.Check(check_parameter)) != "")
 				return result_buffer + "\n";
 
@@ -190,7 +190,7 @@ public:
 				parameter_property::PARAM_OPTION_MULTI_THREAD_USE::PARAM_OPTION_MULTI_THREAD_NUMBER::property_.Read(thread_number, sdnn_parameter_);
 				omp_set_num_threads(thread_number);
 #else
-				std::cout << "OPENMP未使用でコンパイルしたため，並列処理ができません"<< std::endl;
+				std::cout << "please compile with -openmp"<< std::endl;
 #endif
 
 			}
@@ -259,7 +259,7 @@ public:
 			std::vector<std::string> train_method_buffer;
 			lexial::Split(train_method_buffer, *train_method_itr, '(');
 
-			if (train_method_buffer[0] == "for")
+			if (train_method_buffer[0] == "iteration")
 			{
 				train_method_buffer[1].erase(--train_method_buffer[1].end());
 				int count = stoi(train_method_buffer[1]);
@@ -318,12 +318,35 @@ public:
 		try
 		{
 			std::string method;
+			//SD組み合わせ指定手段のオーバーライト，sd_file不要に
 			parameter_property::PARAM_SD_METHOD::property_.Read(method, sdnn_parameter_);
 			if(method != parameter_property::PARAM_SD_METHOD::CNT_SD_METHOD::saved_)
 			{
 				sdnn_parameter_.OverwriteParameter(parameter_property::PARAM_SD_METHOD::property_.name_, parameter_property::PARAM_SD_METHOD::CNT_SD_METHOD::saved_);
 				sdnn_parameter_.OverwriteParameter(parameter_property::PARAM_SD_METHOD::PARAM_LINE::property_.name_, sd_->GetDesensitizationList());
 			}
+			
+			//CORRELATION_MATRIX指定のオーバーライト，CMfile不要に
+			std::vector<std::string> pc_type_list;
+			parameter_property::PARAM_SD_PC_TYPE::property_.Read(pc_type_list, sdnn_parameter_);
+			for (auto ptl_itr = pc_type_list.begin(); ptl_itr != pc_type_list.end(); ptl_itr++)
+			{
+				if (ptl_itr->find(parameter_property::PARAM_SD_PC_TYPE::CNT_PC_METHOD_::correlation_matrix_) != std::string::npos)
+				{
+					std::vector<std::string> setting_buffer_vector;
+					bipl::lexial::Split(setting_buffer_vector, *ptl_itr, '(');
+					setting_buffer_vector[2].erase(--setting_buffer_vector[2].end());
+					setting_buffer_vector[2].erase(--setting_buffer_vector[2].end());
+
+					std::vector<std::string> f_b_i_p;
+					bipl::lexial::Split(f_b_i_p,setting_buffer_vector[2], ',');
+
+					std::string line_buffer = bipl::sdnn::base::pc::CorrelationMatrixFile2Strings(f_b_i_p[0]);
+					*ptl_itr = setting_buffer_vector[0] + "(" + parameter_property::PARAM_SD_PC_TYPE::CNT_PC_METHOD_::saved_ + "(" + line_buffer + "," + f_b_i_p[1] + "," + f_b_i_p[2] + "," + f_b_i_p[3] + "))";
+				}
+			}
+			sdnn_parameter_.OverwriteParameter(parameter_property::PARAM_SD_PC_TYPE::property_.name_, pc_type_list);
+
 			std::ofstream parameter_file;
 			utility::OpenFile(parameter_file, filename, std::ios::binary);
 			std::stringstream buffer_stream;
@@ -396,6 +419,7 @@ public:
 	*/
 	void Reset(void)
 	{
+		sdnn_statement_ = instance;
 		sd_.reset();
 		nn_.reset();
 	}
@@ -404,6 +428,7 @@ public:
 	{
 		sdnn_parameter_.ReadParameter(out_parameter, parameter_name,"");
 	}
+
 };
 
 template void bipl::sdnn::SDNN::SDNN_PIMPL::InitSDNN(const std::string& filename);

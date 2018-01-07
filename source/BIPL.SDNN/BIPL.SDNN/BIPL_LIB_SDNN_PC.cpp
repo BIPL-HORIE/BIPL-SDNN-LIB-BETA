@@ -1,5 +1,4 @@
 #include "BIPL_LIB_SDNN_PC.h"
-#include "BIPL_LIB_SDNN_PC_SYMBOL.h"
 #include "BIPL_LIB_LEXIAL.h"
 #include "BIPL_LIB_UTILITY.h"
 #include "BIPL_LIB_SDNN_PARAMETERS.h"
@@ -8,6 +7,8 @@
 #include <string>
 #include <random>
 #include <iostream>
+#include <omp.h>
+#include <algorithm>
 namespace bipl
 {
 	namespace sdnn
@@ -69,7 +70,7 @@ namespace bipl
 						inverse_flag[random_buffer] = 1;
 					}
 				}
-
+				
 				void SavePattern(unsigned int *binary, const std::vector<bool> &pattern)
 				{
 					auto pattern_itr = pattern.begin();
@@ -80,6 +81,47 @@ namespace bipl
 							binary[n_counter >> 5] <<= 1;
 					}
 					binary[(pattern.size() - 1) >> 5] += *pattern_itr;
+				}
+				double CalcCorrelation(const std::vector<bool> & pattern1, const std::vector<bool> & pattern2)
+				{
+					if (pattern1.size() != pattern2.size())
+						return 0;
+					int sum = 0;
+					for (int i = 0; i < pattern1.size(); i++)
+						sum += (pattern1[i] == pattern2[i])?1:-1;
+					return (double)sum / pattern1.size();
+				}
+
+				/*! @brief 相関値pから，何個の素子を一致させるか確率的に決定する．
+				@param[in] n パターンの素子数
+				@param[in] p 相関値
+				@param[in] mt メルセンヌツイスタ
+				@return pattern1とpattern2の相関値．
+				*/
+				int CalcDiffNum(const int n, const double p, std::mt19937 &mt)
+				{
+					std::uniform_real_distribution<double> udouble(0, 1);
+					int ret = 0;
+					for (int i = 0; i < n; i++)
+						if (udouble(mt) < p)
+							ret++;
+					return ret;
+				}
+
+				std::string CorrelationMatrixFile2Strings(const std::string &filename)
+				{
+					std::string result_buffer = "";
+					std::ifstream matrix_file;
+					utility::OpenFile(matrix_file, filename);
+
+					std::string line_buffer;
+					while (std::getline(matrix_file, line_buffer))
+					{
+						std::replace(line_buffer.begin(), line_buffer.end(), ',', '$');
+						result_buffer += line_buffer + "\\";
+					}
+					result_buffer.erase(--result_buffer.end());
+					return result_buffer;
 				}
 			}
 		}
@@ -95,13 +137,13 @@ bipl::sdnn::base::SDNN_PC::~SDNN_PC()
 		delete[] *binary_itr;
 }
 
-void bipl::sdnn::base::SDNN_PC::InitPC(const int n, const std::string &pattern_type, std::mt19937 &mt)
+void bipl::sdnn::base::SDNN_PC::InitPC(const int n, const std::string &pattern_type, std::mt19937 &mt, const bool multi_core)
 {
 	//pattern_type
-	//NUMERICAL(q,RANDOM_INVERSE(r))
-	//NUMERICAL(q,INTERPOLATION(r))
-	//SYMBOL(q,RANDOM_INVERSE(r))
-	//SYMBOL(SYMBOL_TREE(filename))
+	//NUMERICAL(RANDOM_INVERSE(q,r))
+	//NUMERICAL(CORRELATION_MATRIX(filename))
+	//SYMBOL(RANDOM_INVERSE(q,r))
+	//SYMBOL(CORRELATION_MATRIX(filename))
 
 	std::vector<std::string> setting_buffer_vector;
 	bipl::lexial::Split(setting_buffer_vector,pattern_type, '(');
@@ -111,45 +153,45 @@ void bipl::sdnn::base::SDNN_PC::InitPC(const int n, const std::string &pattern_t
 	n_ = n;
 	n32_ = ((n_ - 1) >> 5) + 1;
 
-	if (setting_buffer_vector[0] == parameter_property::PARAM_SD_PC_TYPE::CNT_INPUT_TYPE_::numerical_)
+	//setting_buffer_vector = {NUMERICAL / RANDOM_INVERSE / q,r}
+	//setting_buffer_vector = {NUMERICAL / CORRELATION_MATRIX / filename,batch_n,iteration,precision}
+
+	if (setting_buffer_vector[1] == parameter_property::PARAM_SD_PC_TYPE::CNT_PC_METHOD_::random_inverse_)
 	{
-		//setting_buffer_vector = {NUMERICAL / q,RANDOM_INVERSE / r}
-		//setting_buffer_vector = {NUMERICAL / q,INTERPOLATION / r}
-		std::vector<std::string> q_make;
-		bipl::lexial::Split(q_make, setting_buffer_vector[1], ',');
-		if (q_make[1] == parameter_property::PARAM_SD_PC_TYPE::CNT_PC_METHOD_::random_inverse_)
-			RandomInverse(stoi(q_make[0]), stoi(setting_buffer_vector[2]), mt);
-		else if (q_make[1] == parameter_property::PARAM_SD_PC_TYPE::CNT_PC_METHOD_::interpolation_)
-			Interpolation(stoi(q_make[0]), stoi(setting_buffer_vector[2]), mt);
-		else
-			utility::error::BugFound(0x1ff0a);
+		std::vector<std::string> q_r;
+		bipl::lexial::Split(q_r, setting_buffer_vector[2], ',');
+		RandomInverse(stoi(q_r[0]), stoi(q_r[1]), mt);
 	}
-	else if(setting_buffer_vector[0] == parameter_property::PARAM_SD_PC_TYPE::CNT_INPUT_TYPE_::symbol_)
+	else if (setting_buffer_vector[1] == parameter_property::PARAM_SD_PC_TYPE::CNT_PC_METHOD_::correlation_matrix_)
 	{
-		//setting_buffer_vector = {SYMBOL / q,RANDOM_INVERSE / r}
-		// setting_buffer_vector = {SYMBOL / SYMBOL_TREE / filename}
-		std::vector<std::string> q_make;
-		bipl::lexial::Split(q_make, setting_buffer_vector[1], ',');
-		switch (q_make.size())
+		std::vector<std::string> f_b_i_p;
+		bipl::lexial::Split(f_b_i_p, setting_buffer_vector[2], ',');
+		CorrelationMatrix(f_b_i_p[0], stoi(f_b_i_p[1]), stoi(f_b_i_p[2]), stof(f_b_i_p[3]), mt, multi_core);
+	}
+	else if (setting_buffer_vector[1] == parameter_property::PARAM_SD_PC_TYPE::CNT_PC_METHOD_::saved_)
+	{
+		std::vector<std::string> f_b_i_p;
+		bipl::lexial::Split(f_b_i_p, setting_buffer_vector[2], ',');
+
+		std::vector<std::string> line_buffer;
+		bipl::lexial::Split(line_buffer, f_b_i_p[0], '\\');
+		std::vector<std::vector<double>> correlation_matrix;
+
+		for (auto line_buffer_itr = line_buffer.begin(); line_buffer_itr != line_buffer.end(); line_buffer_itr++)
 		{
-		case 1:
-			if(q_make[0] == parameter_property::PARAM_SD_PC_TYPE::CNT_PC_METHOD_::correlation_tree_)
-				SymbolTree(setting_buffer_vector[2], mt);
-			else
-				utility::error::BugFound(0x1fe0a);
-			break;
-		case 2:
-			if (q_make[1] == parameter_property::PARAM_SD_PC_TYPE::CNT_PC_METHOD_::random_inverse_)
-				RandomInverse(stoi(q_make[0]), stoi(setting_buffer_vector[2]), mt);
-			else
-				utility::error::BugFound(0x1fe0b);
-			break;
-		default:
-			utility::error::BugFound(0x1fe0c);
+			std::vector<std::string> string_buffer;
+			lexial::Split(string_buffer, *line_buffer_itr, '$');
+			if (string_buffer.size() <= 1)
+				continue;
+			std::vector<double> correlation_buffer;
+			for (auto str_buf_itr = string_buffer.begin(); str_buf_itr != string_buffer.end(); str_buf_itr++)
+				correlation_buffer.push_back(stof(*str_buf_itr));
+			correlation_matrix.push_back(correlation_buffer);
 		}
+		CorrelationMatrix(correlation_matrix, stoi(f_b_i_p[1]), stoi(f_b_i_p[2]), stof(f_b_i_p[3]), mt, multi_core);
 	}
 	else
-		utility::error::BugFound(0x22);
+		utility::error::BugFound(0x1ff0a);
 }
 
 void bipl::sdnn::base::SDNN_PC::RandomInverse(const int q, const int r, std::mt19937 &mt)
@@ -169,106 +211,351 @@ void bipl::sdnn::base::SDNN_PC::RandomInverse(const int q, const int r, std::mt1
 	}
 }
 
-void bipl::sdnn::base::SDNN_PC::Interpolation(const int q, const int r, std::mt19937 &mt)
+void bipl::sdnn::base::SDNN_PC::CorrelationMatrix(const std::vector<std::vector<double>> &correlation_matrix, const int batch_n, const int max_iteration, const double precision, std::mt19937 &mt, const bool multi_core)
 {
-	utility::AllocateMemory(binary_pattern_, q, n32_);
+	const int itr = n_ / batch_n;
+	const int q = static_cast<int>(correlation_matrix.size());
 
-	int split_width = q / r;
+	std::uniform_int_distribution<int> uint_q(0, q - 1);
+	std::uniform_int_distribution<int> uint_n(0, batch_n - 1);
 
-	std::vector<bool> pattern(n_);
-	std::vector<bool> first_pattern(n_);
-	std::vector<bool> next_pattern(n_);
-
-	std::vector<int> difference(n_);
-
-	std::uniform_int_distribution<int> kernel(0, n_ - 1);
-
-	//パターンの作成
-
-	pc::MakeRandomPattern(pattern, mt);
-	first_pattern = pattern;
-	std::uniform_int_distribution<int> kernel_sw(0, split_width - 1);
-
-	for (int s_counter = 0; s_counter < r; s_counter++)
+	std::vector<std::vector<bool>> final_pattern(q);
+	for (int i = 0; i < q; i++)
 	{
-		if (s_counter == r - 1)
-			next_pattern = first_pattern;
-		else
-			pc::MakeRandomPattern(next_pattern, mt);
-
-		int different_number = 0;
-		for (int n_counter = 0; n_counter < n_; n_counter++)
-		{
-			difference[n_counter] = static_cast<int>(next_pattern[n_counter] - pattern[n_counter]);
-			if (difference[n_counter] == 1)
-				different_number++;
-		}
-
-		std::vector<int> reverse(split_width, (different_number - (different_number % (split_width))) / (split_width));
-		different_number %= (split_width);
-
-		if (different_number != 0)
-		{
-			int default_reverse_number = reverse[0];
-			while (different_number > 0)
-			{
-				int reverse_buf = 0;
-				do
-				{
-					reverse_buf = kernel_sw(mt);
-				} while (reverse[reverse_buf] != default_reverse_number);
-				reverse[reverse_buf]++;
-				different_number--;
-			}
-		}
-
-		//patternのbinary変換
-		pc::SavePattern(binary_pattern_[(s_counter*split_width)], pattern);
-
-		for (int sw_counter = 0; sw_counter < split_width - 1; sw_counter++)
-		{
-			for (int r_counter = 0; r_counter < reverse[sw_counter]; r_counter++)
-			{
-				int random_buffer;
-				do
-				{
-					random_buffer = kernel(mt);
-				} while (difference[random_buffer] != 1);
-				pattern[random_buffer] = !pattern[random_buffer];
-				difference[random_buffer] = 0;
-
-				do
-				{
-					random_buffer = kernel(mt);
-				} while (difference[random_buffer] != -1);
-				pattern[random_buffer] = !pattern[random_buffer];
-				difference[random_buffer] = 0;
-			}
-			pc::SavePattern(binary_pattern_[(s_counter*split_width + 1 + sw_counter)], pattern);
-		}
-
-		//nextpatternをpatternに移送
-		pattern = next_pattern;
+		final_pattern[i].resize(0);
 	}
 
-	// 先頭と末尾をコピー
-	for (int n32_counter = 0; n32_counter < n32_; n32_counter++)
-		binary_pattern_[q - 1][n32_counter] = binary_pattern_[0][n32_counter];
-}
+	//分散処理用に，個別のメルセンヌツイスタを準備する．
+	std::vector<std::mt19937> mt_list(itr);
+	std::uniform_int_distribution<int> seed_dist(0, 4294967295);
 
-void bipl::sdnn::base::SDNN_PC::SymbolTree(const std::string &tree_filename, std::mt19937 &mt)
-{
-	pc::SYMBOL_ROOT symbol_tree(n_);
-	symbol_tree.Load(tree_filename, mt);
+	for (int r = 0; r < itr; r++)
+	{
+		std::vector<unsigned int> random_seed;
+		for (int i = 0; i < 10; i++)
+			random_seed.insert(random_seed.begin(), seed_dist(mt)); //順番をひっくり返す．
+		std::seed_seq random_seed_seq(random_seed.begin(), random_seed.end());
+		mt_list[r].seed(random_seed_seq);
+	}
 
-	std::vector<std::vector<bool>> pattern_list;
-	symbol_tree.GetPatternList(pattern_list);
+	if (multi_core)
+	{
+		std::vector<std::vector<std::vector<bool>>> pattern_strage(itr);
 
-	utility::AllocateMemory(binary_pattern_, static_cast<int>(pattern_list.size()), n32_);
+#ifndef _OPENMP
+		std::cout << "not compiled with openmp" << std::endl;
+#else
+#pragma omp parallel for
+#endif
+		for (int r = 0; r < itr; r++)
+		{
+			int margin = 1;
+			int margin_count = 0;
+			//バッファ用パターン
+			std::vector<std::vector<bool>> pattern(q);
+			for (int i = 0; i < q; i++)
+			{
+				pattern[i].resize(batch_n);
+			}
 
-	auto pattern_list_itr = pattern_list.begin();
+			std::vector<int> list_of_init(q);
+			std::vector<int> list_of_init_buffer(q);
+
+		label1:
+
+			for (int i = 0; i < q; i++)
+				list_of_init_buffer[i] = 0;
+
+			for (int i = 0; i < q; i++)
+			{
+				bipl::sdnn::base::pc::MakeRandomPattern(pattern[i], mt_list[r]);
+			}
+			
+			for (int i = 0; i < q; i++)
+			{
+				int c = 0;
+				do
+				{
+					c = uint_q(mt_list[r]);
+				} while (list_of_init_buffer[c] != 0);
+				list_of_init[i] = c;
+				list_of_init_buffer[c] = 1;
+			}
+
+			for (int i = 0; i < q; i++)
+			{
+				double now_correlation;
+				double correlation_delta_sum;
+				std::uniform_int_distribution<int>check(0, i);
+
+				int iteration = 0;
+
+				double correlation_sum = 0;
+				for (int j = i; j >= 0; j--)
+				{
+					correlation_sum += abs(correlation_matrix[list_of_init[i]][list_of_init[j]]);
+				}
+
+				int k;
+				int k2;
+				int c_elem_num;
+				do {
+					int j = check(mt_list[r]);
+					c_elem_num = base::pc::CalcDiffNum(batch_n, correlation_matrix[list_of_init[i]][list_of_init[j]], mt_list[r]);
+
+					now_correlation = bipl::sdnn::base::pc::CalcCorrelation(pattern[list_of_init[i]], pattern[list_of_init[j]]) * batch_n;
+					now_correlation -= c_elem_num;
+
+					do
+					{
+						if (now_correlation >= 2) //相関減るように寄せる
+						{
+							do
+							{
+								k = uint_n(mt_list[r]);
+							} while (pattern[list_of_init[i]][k] != pattern[list_of_init[j]][k] || pattern[list_of_init[i]][k] == 0);
+							do
+							{
+								k2 = uint_n(mt_list[r]);
+							} while (pattern[list_of_init[i]][k2] != pattern[list_of_init[j]][k2] || pattern[list_of_init[i]][k2] == 1);
+							pattern[list_of_init[i]][k] = 0;
+							pattern[list_of_init[i]][k2] = 1;
+						}
+						else if (now_correlation <= -2) //相関増えるように寄せる
+						{
+							do
+							{
+								k = uint_n(mt_list[r]);
+							} while (pattern[list_of_init[i]][k] == pattern[list_of_init[j]][k] || pattern[list_of_init[i]][k] == 0);
+							do
+							{
+								k2 = uint_n(mt_list[r]);
+							} while (pattern[list_of_init[i]][k2] == pattern[list_of_init[j]][k2] || pattern[list_of_init[i]][k2] == 1);
+							pattern[list_of_init[i]][k] = 0;
+							pattern[list_of_init[i]][k2] = 1;
+						}
+						now_correlation = bipl::sdnn::base::pc::CalcCorrelation(pattern[list_of_init[i]], pattern[list_of_init[j]]) * batch_n;
+						now_correlation -= c_elem_num;
+					} while (abs(now_correlation) > 2);
+
+					correlation_delta_sum = 0;
+					for (int j = i; j >= 0; j--)
+					{
+						correlation_delta_sum += abs(correlation_matrix[list_of_init[i]][list_of_init[j]] * ((bipl::sdnn::base::pc::CalcCorrelation(pattern[list_of_init[i]], pattern[list_of_init[j]]) - correlation_matrix[list_of_init[i]][list_of_init[j]])));
+					}
+					correlation_delta_sum /= correlation_sum;
+					iteration++;
+				} while (correlation_delta_sum > precision * margin && iteration < max_iteration);
+
+				if (iteration >= max_iteration)
+				{
+					margin_count++;
+					if (margin_count >= 3)
+					{
+						margin_count = 0;
+						margin++;
+					}
+					goto label1;
+				}
+				
+			}
+			pattern_strage[r] = pattern;
+		}
+		for (int r = 0; r < itr; r++)
+		{
+			for (int i = 0; i < q; i++)
+				final_pattern[i].insert(final_pattern[i].end(), pattern_strage[r][i].begin(), pattern_strage[r][i].end());
+		}
+	}
+	else
+	{
+		for (int r = 0; r < itr; r++)
+		{
+			int margin = 1;
+			int margin_count = 0;
+			//バッファ用パターン
+			std::vector<std::vector<bool>> pattern(q);
+			for (int i = 0; i < q; i++)
+			{
+				pattern[i].resize(batch_n);
+			}
+
+			std::vector<int> list_of_init(q);
+			std::vector<int> list_of_init_buffer(q);
+
+		label2:
+
+			for (int i = 0; i < q; i++)
+				list_of_init_buffer[i] = 0;
+
+			for (int i = 0; i < q; i++)
+			{
+				bipl::sdnn::base::pc::MakeRandomPattern(pattern[i], mt_list[r]);
+			}
+
+			for (int i = 0; i < q; i++)
+			{
+				int c = 0;
+				do
+				{
+					c = uint_q(mt_list[r]);
+				} while (list_of_init_buffer[c] != 0);
+				list_of_init[i] = c;
+				list_of_init_buffer[c] = 1;
+			}
+
+			for (int i = 0; i < q; i++)
+			{
+				double now_correlation;
+				double correlation_delta_sum;
+				std::uniform_int_distribution<int>check(0, i);
+
+				int iteration = 0;
+
+				double correlation_sum = 0;
+				for (int j = i; j >= 0; j--)
+				{
+					correlation_sum += abs(correlation_matrix[list_of_init[i]][list_of_init[j]]);
+				}
+
+				int k;
+				int k2;
+				int c_elem_num;
+				do {
+					int j = check(mt_list[r]);
+					c_elem_num = base::pc::CalcDiffNum(batch_n, correlation_matrix[list_of_init[i]][list_of_init[j]], mt_list[r]);
+
+					now_correlation = bipl::sdnn::base::pc::CalcCorrelation(pattern[list_of_init[i]], pattern[list_of_init[j]]) * batch_n;
+					now_correlation -= c_elem_num;
+
+					do
+					{
+						if (now_correlation >= 2) //相関減るように寄せる
+						{
+							do
+							{
+								k = uint_n(mt_list[r]);
+							} while (pattern[list_of_init[i]][k] != pattern[list_of_init[j]][k] || pattern[list_of_init[i]][k] == 0);
+							do
+							{
+								k2 = uint_n(mt_list[r]);
+							} while (pattern[list_of_init[i]][k2] != pattern[list_of_init[j]][k2] || pattern[list_of_init[i]][k2] == 1);
+							pattern[list_of_init[i]][k] = 0;
+							pattern[list_of_init[i]][k2] = 1;
+						}
+						else if (now_correlation <= -2) //相関増えるように寄せる
+						{
+							do
+							{
+								k = uint_n(mt_list[r]);
+							} while (pattern[list_of_init[i]][k] == pattern[list_of_init[j]][k] || pattern[list_of_init[i]][k] == 0);
+							do
+							{
+								k2 = uint_n(mt_list[r]);
+							} while (pattern[list_of_init[i]][k2] == pattern[list_of_init[j]][k2] || pattern[list_of_init[i]][k2] == 1);
+							pattern[list_of_init[i]][k] = 0;
+							pattern[list_of_init[i]][k2] = 1;
+						}
+						now_correlation = bipl::sdnn::base::pc::CalcCorrelation(pattern[list_of_init[i]], pattern[list_of_init[j]]) * batch_n;
+						now_correlation -= c_elem_num;
+					} while (abs(now_correlation) > 2);
+
+					correlation_delta_sum = 0;
+					for (int j = i; j >= 0; j--)
+					{
+						correlation_delta_sum += abs(correlation_matrix[list_of_init[i]][list_of_init[j]] * ((bipl::sdnn::base::pc::CalcCorrelation(pattern[list_of_init[i]], pattern[list_of_init[j]]) - correlation_matrix[list_of_init[i]][list_of_init[j]])));
+					}
+					correlation_delta_sum /= correlation_sum;
+					iteration++;
+				} while (correlation_delta_sum > precision * margin && iteration < max_iteration);
+
+				if (iteration >= max_iteration)
+				{
+					margin_count++;
+					if (margin_count >= 3)
+					{
+						margin_count = 0;
+						margin++;
+					}
+					goto label2;
+				}
+			}
+			for (int i = 0; i < q; i++)
+				final_pattern[i].insert(final_pattern[i].end(), pattern[i].begin(), pattern[i].end());
+		}
+	}
+
+	utility::AllocateMemory(binary_pattern_, q, n32_);
+
+	auto pattern_list_itr = final_pattern.begin();
 	for (auto binary_itr = binary_pattern_.begin(); binary_itr != binary_pattern_.end(); binary_itr++)
 	{
 		pc::SavePattern(*binary_itr, *pattern_list_itr++);
 	}
+
+	double average_prec = 0;
+	for (int i = 0; i < final_pattern.size(); i++)
+	{
+		for (int j = 0; j < final_pattern.size(); j++)
+		{
+			average_prec += pow(correlation_matrix[i][j] - pc::CalcCorrelation(final_pattern[i], final_pattern[j]), 2);
+		}
+	}
+	average_prec /= pow(final_pattern.size(), 2);
+	std::cout << "\taverage_precision = " << sqrt(average_prec) << std::endl;
+}
+
+void bipl::sdnn::base::SDNN_PC::CorrelationMatrix(const std::string &correlation_matrix_filename, const int batch_n, const int max_iteration, const double precision, std::mt19937 &mt, const bool multi_core)
+{
+	std::ifstream ifs;
+	std::string buffer;
+	std::vector<std::string> string_buffer;
+	std::vector<std::vector<double>> correlation_matrix;
+
+	std::string matrix_filename = correlation_matrix_filename;
+
+	bool is_correct_matrix = true;
+	do {
+		utility::OpenFile(ifs, matrix_filename);
+		while (std::getline(ifs, buffer))
+		{
+			lexial::DeleteCharactor(buffer, " \t");
+			lexial::Split(string_buffer, buffer, ',');
+			if (string_buffer.size() <= 1)
+				continue;
+			std::vector<double> correlation_buffer;
+			for (auto str_buf_itr = string_buffer.begin(); str_buf_itr != string_buffer.end(); str_buf_itr++)
+				correlation_buffer.push_back(stof(*str_buf_itr));
+			correlation_matrix.push_back(correlation_buffer);
+		}
+
+		for (int i = 0; i < correlation_matrix.size(); i++)
+		{
+			for (int j = i; j >= 0; j--)
+			{
+				if (i == j)
+					if (correlation_matrix[i][i] != 1)
+						is_correct_matrix = false;
+				else
+					if (correlation_matrix[i][j] != correlation_matrix[j][i])
+						is_correct_matrix = false;
+				if (correlation_matrix[i][j] < -1 || correlation_matrix[i][j] > 1)
+					is_correct_matrix = false;
+			}
+		}
+
+		if (!is_correct_matrix)
+		{
+			ifs.close();
+			std::cout << "BAD Correlation Matrix." << std::endl;
+			std::cout << "Type a new file_name: ";
+			std::cin >> matrix_filename;
+			std::cin.ignore();
+			is_correct_matrix = true;
+			continue;
+		}
+	} while (!is_correct_matrix);
+	ifs.close();
+
+	CorrelationMatrix(correlation_matrix, batch_n, max_iteration, precision, mt, multi_core);
 }

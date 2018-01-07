@@ -1,22 +1,19 @@
-﻿  BIPL_LIB_LEXIAL.cpp
-  BIPL_LIB_NUMERICAL_FORMULA_ANALYSIS.cpp
+﻿  BIPL_LIB_NUMERICAL_FORMULA_ANALYSIS.cpp
   BIPL_LIB_PARAMETERS.cpp
-..\BIPL.PARAMETERS\BIPL_LIB_PARAMETERS.cpp(438): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
   BIPL_LIB_PARAMETERS_JUDGEMENT.cpp
   BIPL_LIB_UTILITY.cpp
-  BIPL_LIB_SDNN_FACTORY.cpp
   BIPL_LIB_SDNN.cpp
-  BIPL_LIB_SDNN_NN_CUSTOM.cpp
+  BIPL_LIB_SDNN_FACTORY.cpp
+  BIPL_LIB_SDNN_NN_PP.cpp
   BIPL_LIB_SDNN_NN_SP.cpp
   BIPL_LIB_SDNN_NN_VIRTUAL.cpp
-  BIPL_LIB_SDNN_NN_PP.cpp
   BIPL_LIB_SDNN_PARAMETERS.cpp
-BIPL_LIB_SDNN_PARAMETERS.cpp(50): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+BIPL_LIB_SDNN_PARAMETERS.cpp(59): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
   BIPL_LIB_SDNN_PC.cpp
 BIPL_LIB_SDNN_PC.cpp(76): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
   BIPL_LIB_SDNN_PC_SYMBOL.cpp
 BIPL_LIB_SDNN_PC_SYMBOL.cpp(27): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
 BIPL_LIB_SDNN_PC_SYMBOL.cpp(33): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-  BIPL_LIB_SDNN_SD_VIRTUAL.cpp
   BIPL_LIB_SDNN_SD_SINGLE.cpp
+  BIPL_LIB_SDNN_SD_VIRTUAL.cpp
   BIPL.SDNN.vcxproj -> F:\BIPL.SDNN\Release\BIPL.SDNN.lib

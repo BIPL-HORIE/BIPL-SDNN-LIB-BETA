@@ -5,6 +5,9 @@
 #include <iostream>
 #include <fstream>
 
+const std::string bipl::parameters::judgement::JUDGEMENT_YN::CNT_YN_::y_("Y");
+const std::string bipl::parameters::judgement::JUDGEMENT_YN::CNT_YN_::n_("N");
+
 bool bipl::parameters::judgement::JUDGEMENT::judgement(PARAMETERS *parameters, const std::string parameter_name, const std::string default_parameter_content)const
 {
 	utility::error::BugFound(0x100);
@@ -111,14 +114,14 @@ bool bipl::parameters::judgement::JUDGEMENT_STRING_LIST::judgement(PARAMETERS *p
 	return false;
 }
 
-bipl::parameters::judgement::JUDGEMENT_YN::JUDGEMENT_YN():JUDGEMENT("Y or N")
+bipl::parameters::judgement::JUDGEMENT_YN::JUDGEMENT_YN():JUDGEMENT(JUDGEMENT_YN::CNT_YN_::y_+" or " + JUDGEMENT_YN::CNT_YN_::n_)
 {}
 
 bool bipl::parameters::judgement::JUDGEMENT_YN::judgement(PARAMETERS *parameters, const std::string parameter_name, const std::string default_parameter_content)const
 {
 	std::string parameter_content;
 	parameters->ReadParameter(parameter_content, parameter_name, default_parameter_content);
-	return (parameter_content == "Y" || parameter_content == "N");
+	return (parameter_content == JUDGEMENT_YN::CNT_YN_::y_ || parameter_content == JUDGEMENT_YN::CNT_YN_::n_);
 }
 
 bipl::parameters::judgement::JUDGEMENT_VECTOR_SIZE::JUDGEMENT_VECTOR_SIZE(int vector_size):JUDGEMENT("A vector consisting of "+std::to_string(vector_size)+" elements")
@@ -139,7 +142,7 @@ bool bipl::parameters::judgement::JUDGEMENT_RANDOMSEED::judgement(PARAMETERS *pa
 {
 	std::string content_buffer;
 	parameters->ReadParameter(content_buffer, parameter_name, default_parameter_content);
-	if (content_buffer == "random_device")
+	if (content_buffer == HARDWARE_ENTROPY)
 		return true;
 	else
 	{

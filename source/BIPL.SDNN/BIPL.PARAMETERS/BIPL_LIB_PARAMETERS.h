@@ -10,7 +10,7 @@
 */
 #pragma once
 
-#define RANDOM_DEVICE "random_device"
+#define HARDWARE_ENTROPY "hardware_entropy"
 
 #include <memory>
 #include <string>
@@ -82,7 +82,7 @@ namespace bipl
 			/*! @brief パラメータの登録＋上書き
 			パラメータが存在していた場合は上書き，なかった場合は新たに登録する．
 			コードの仕様上，無い場合登録する形になったが，正直単純なパラメータ登録に使うことは非推奨．
-			random_seed = random_deviceの時に，random_deviceを用いてシードを作成．
+			random_seed = hardware_entropyの時に，hardware_entropyを用いてシードを作成．
 			作成したシード値でrandom_seedを上書きしたい場合等に用いて欲しい．
 			@param[in] parameter_name パラメータ名
 			@param[in] parameter_content パラメータの内容

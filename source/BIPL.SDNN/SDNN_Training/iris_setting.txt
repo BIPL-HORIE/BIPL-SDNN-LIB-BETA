@@ -1,0 +1,34 @@
+<SDNN>
+{
+	%“ü—Í”
+	input_number = 4
+	<SD>
+	{
+		method = saved
+		line = [(0,1),(0,2),(0,3),(1,0),(1,2),(1,3),(2,0),(2,1),(2,3),(3,0),(3,1),(3,2)]
+		<PC>
+		{
+			n = 100
+			type = [NUMERICAL(100,RANDOM_INVERSE(3)):4]
+			random_seed = random_device
+	    }
+	}
+	<NN>
+	{
+		type = PP
+		train_method = for(300)
+		random_seed = random_device
+		initial_value_range = [-5,5]
+		output_range = [0,2]
+		output_quantization_step_size = 1
+	}
+	<OPTION>
+	{
+		print_progression = Y
+		<MULTI_THREAD>
+		{
+			use = Y
+			thread_number = 6
+		}
+	}
+}

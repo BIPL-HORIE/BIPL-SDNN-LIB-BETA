@@ -107,7 +107,7 @@ void bipl::utility::InitMt(std::mt19937 &out_mt, bipl::parameters::PARAMETERS &p
 	parameters::judgement::JUDGEMENT_RANDOMSEED judgement_randomseed;
 
 	parameter.ReadParameter(random_seed_buffer, seed_name, default_content, &judgement_randomseed);
-	if (random_seed_buffer == RANDOM_DEVICE)
+	if (random_seed_buffer == HARDWARE_ENTROPY)
 	{
 		random_seed.clear();
 		std::random_device random_buffer;

@@ -172,6 +172,16 @@ namespace bipl
 				JUDGEMENT_YN();
 				//! デコンストラクタ
 				~JUDGEMENT_YN() {}
+
+				class CNT_YN_
+				{
+				private:
+					CNT_YN_() = delete;
+				public:
+					static const std::string y_;
+					static const std::string n_;
+				};
+
 				/*! @brief 判定式
 				@param[in] parameters 判定するパラメータリスト
 				@param[in] parameter_name パラメータ名
@@ -212,7 +222,7 @@ namespace bipl
 			{
 			public:
 				//! コンストラクタ
-				JUDGEMENT_RANDOMSEED() :JUDGEMENT("String \"random_device\", or a unsigned integer array ([uint1, uint2,,,])") {}
+				JUDGEMENT_RANDOMSEED() :JUDGEMENT("String \"hardware_entropy\", or a unsigned integer array ([uint1, uint2,,,])") {}
 				//! デコンストラクタ
 				~JUDGEMENT_RANDOMSEED() {}
 
@@ -220,7 +230,7 @@ namespace bipl
 				@param[in] parameters 判定するパラメータリスト
 				@param[in] parameter_name パラメータ名
 				@param[in] default_parameter_content パラメータ規定値
-				@return	パラメータがrandom_deviceか，unsigned intベクトルならtrue
+				@return	パラメータがhardware_entropyか，unsigned intベクトルならtrue
 				*/
 				bool judgement(parameters::PARAMETERS *parameters, const std::string parameter_name, const std::string default_parameter_content = "")const;
 			};

@@ -51,7 +51,8 @@ namespace bipl
 				/*! @brief ’†g‚Ìã‘‚«
 				*/
 				void Overwrite(const std::string &parameter_content) {
-					std::cout << "overwrite parameter: " << parameter_name_ << " = " << parameter_content << std::endl;				
+					if(parameter_content.size () < 300)
+						std::cout << "overwrite parameter: " << parameter_name_ << " = " << parameter_content << std::endl;				
 					parameter_content_ = parameter_content;
 				}
 

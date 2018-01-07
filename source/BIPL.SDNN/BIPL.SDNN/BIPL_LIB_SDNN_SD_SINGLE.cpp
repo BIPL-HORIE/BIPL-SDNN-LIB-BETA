@@ -86,10 +86,16 @@ void bipl::sdnn::base::sd::SDNN_SD_SINGLE::InitSD(parameters::PARAMETERS &sdnn_p
 	auto s_list_itr = s_list_.cbegin();
 	auto pattern_c_itr = pattern_c_.begin();
 	auto pattern_s_itr = pattern_s_.begin();
+
+	std::string multi_thread;
+	parameter_property::PARAM_OPTION_MULTI_THREAD_USE::property_.Read(multi_thread, sdnn_parameter);
+
 	for (unsigned int d_counter = 0; d_counter < desensitize_number_; d_counter++)
 	{
-		pattern_c_itr->InitPC(n_, init_type[*c_list_itr], mt);
-		pattern_s_itr->InitPC(n_, init_type[*s_list_itr], mt);
+		std::cout << "Init code pattern (SD[" << *c_list_itr << "," << *s_list_itr << "]>Input " << *c_list_itr << "):" << std::endl;
+		pattern_c_itr->InitPC(n_, init_type[*c_list_itr], mt, multi_thread == bipl::parameters::judgement::JUDGEMENT_YN::CNT_YN_::y_);
+		std::cout << "Init code pattern (SD[" << *c_list_itr << "," << *s_list_itr << "]>Input " << *s_list_itr << "):" << std::endl;
+		pattern_s_itr->InitPC(n_, init_type[*s_list_itr], mt, multi_thread == bipl::parameters::judgement::JUDGEMENT_YN::CNT_YN_::y_);
 		q_[*c_list_itr++] = pattern_c_itr++->GetPatternNumber();
 		q_[*s_list_itr++] = pattern_s_itr++->GetPatternNumber();
 	}

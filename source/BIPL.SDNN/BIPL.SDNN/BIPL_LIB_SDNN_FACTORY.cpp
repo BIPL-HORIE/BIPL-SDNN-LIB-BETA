@@ -31,14 +31,15 @@ void bipl::sdnn::base::FactorySD(std::unique_ptr<SDNN_SD_VIRTUAL> &out_sd_pointe
 
 void bipl::sdnn::base::FactoryNN(std::unique_ptr<SDNN_NN_VIRTUAL> &out_nn_pointer, parameters::PARAMETERS &sdnn_parameter)
 {
-	std::string nn_type;
-	parameter_property::PARAM_NN_TYPE::property_.Read(nn_type, sdnn_parameter);
+	std::string issue_type;
+	parameter_property::PARAM_SDNN_TYPE::property_.Read(issue_type, sdnn_parameter);
+
 	try {
-		if (nn_type == parameter_property::PARAM_NN_TYPE::CNT_NN_TYPE_::pp_)
+		if (issue_type == parameter_property::PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::function_approximation_)
 		{
 			out_nn_pointer = std::make_unique<nn::SDNN_NN_PP>();
 		}
-		else if (nn_type == parameter_property::PARAM_NN_TYPE::CNT_NN_TYPE_::sp_)
+		else if (issue_type == parameter_property::PARAM_SDNN_TYPE::CNT_SDNN_TYPE_::pattern_recognition_)
 		{
 			std::string multi_class_recognition_method;
 			parameter_property::PARAM_NN_SP_MULTI_CLASS_RECOGNITION_METHOD::property_.Read(multi_class_recognition_method, sdnn_parameter);

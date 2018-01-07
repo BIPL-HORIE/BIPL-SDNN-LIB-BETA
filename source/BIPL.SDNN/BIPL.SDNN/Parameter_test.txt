@@ -1,0 +1,37 @@
+NoTagInt = 1
+NoTagDouble = 2.2%comment
+NoTagString = string1  %コメントテスト
+NoTagFormula = 1+2*3-4
+%comment
+NoTagStringArray = [string1,string2]
+NotagValueArray = [1,2,3,4,5,6,7]
+NotagValueArray2 = [1.0,2.0,3.0,4.1,5.2,6.3,7.4]
+
+<Tag1>
+{
+	1TagInt = 3
+	1TagDouble = 4.0
+	1TagString = string2
+	1TagFormula = 1+2*3-4
+
+	1TagStringArray = [string1,string2]
+	1tagValueArray = [1,2,3,4,5,6,7]
+	1tagValueArray2 = [1.0,2.0,3.0,4.1,5.2,6.3,7.4]
+
+	実はいこーるさえ含まれて居なければこんなのもコメントになる
+	%が書いてあれば=があってもコメントになる
+
+	<Tag2>
+	{
+		2TagInt = 5
+		2TagDouble = 6.1
+		2TagString = string3
+		2TagFormula = 2464*564787+57897-5468
+	
+		2TagStringArray = [string1,string2]
+		2tagValueArray = [1,2,3,4,5,6,7]
+		2tagValueArray2 = [1.0,2.0,3.0,4.1,5.2,6.3,7.4]
+	}
+	%その代わり　= の優先度が高いのでパラメータ名 = 中身}とやると
+	%中身が（中身}）になって正常動作しなくなる．
+}

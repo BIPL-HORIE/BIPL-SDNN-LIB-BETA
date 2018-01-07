@@ -1,6 +1,6 @@
-﻿  コード生成しています。
-  0 of 2505 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+﻿  SDNN_Training.cpp
+  コード生成しています。
+  All 2288 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   コード生成が終了しました。
-  SDNN_Training.vcxproj -> F:\BIPL.SDNN\x64\Release\SDNN_Training.exe
+  SDNN_Training.vcxproj -> D:\BIPL.SDNN\x64\Release\SDNN_Training.exe
+  SDNN_Training.vcxproj -> D:\BIPL.SDNN\x64\Release\SDNN_Training.pdb (Full PDB)

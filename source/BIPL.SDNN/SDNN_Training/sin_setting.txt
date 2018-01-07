@@ -1,0 +1,33 @@
+<SDNN>
+{
+	%“ü—Í”
+	input_number = 2
+	<SD>
+	{
+		method = mutual
+		<PC>
+		{
+			n = 100
+			type = [NUMERICAL(100,RANDOM_INVERSE(3)):2]
+			random_seed = random_device
+	    }
+	}
+	<NN>
+	{
+		type = PP
+		train_method = for(300)
+		random_seed = random_device
+		initial_value_range = [-5,5]
+		output_range = [-1.2,1.2]
+		output_quantization_step_size = 0.01
+	}
+	<OPTION>
+	{
+		print_progression = Y
+		<MULTI_THREAD>
+		{
+			use = Y
+			thread_number = 6
+		}
+	}
+}

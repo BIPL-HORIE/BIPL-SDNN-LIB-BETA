@@ -1,0 +1,33 @@
+<SDNN>
+{
+	%ì¸óÕêî
+	input_number = 8
+	<SD>
+	{
+		method = mutual
+		<PC>
+		{
+			n = 200
+			type = [SYMBOL(SYMBOL_TREE(sex.csv)),NUMERICAL(100,RANDOM_INVERSE(3)):7]
+			random_seed = random_device
+	    }
+	}
+	<NN>
+	{
+		type = SP
+		multi_class_recognition_method = 1v1
+		category_number = 30
+		train_method = for(300)
+		random_seed = random_device
+		initial_value_range = [-5,5]
+	}
+	<OPTION>
+	{
+		print_progression = Y
+		<MULTI_THREAD>
+		{
+			use = Y
+			thread_number = 6
+		}
+	}
+}
